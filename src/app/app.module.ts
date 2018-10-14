@@ -10,8 +10,9 @@ import { ListCategoryComponent } from './list-category/list-category.component';
 import { routing } from "./core/app.routing";
 import { AuthenticationService } from "./service/auth.service";
 import { ReactiveFormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CategoryService } from "./service/category.service";
+import { TokenInterceptor } from "./core/token.inteceptor";
 import { TokenStorage } from "./core/token.storage";
 
 @NgModule({
@@ -28,7 +29,16 @@ import { TokenStorage } from "./core/token.storage";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthenticationService, CategoryService, TokenStorage],
+  providers: [
+    AuthenticationService,
+    CategoryService,
+    TokenStorage,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi : true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
