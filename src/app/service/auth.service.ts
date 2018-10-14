@@ -2,22 +2,32 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { TokenStorage } from '../core/token.storage';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private token: TokenStorage) {
   }
 
-  login(email: string, password: string) {
-    return this.http.post<any>('/login', {email: email, password: password})
-      .pipe(map(user => {
-        // login successful if there's a jwt token in the response
-        if (user && user.token) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
-        }
+  login(email: string, password: string): Observable<any> {
+    const credentials = {
+      email: email,
+      password: password
+    };
 
-        return user;
-      }));
+    return this.http.post<any>('http://localhost:3000/login', credentials)
+      .pipe(
+        map(user => {
+          if (user && user.token) {
+            this.token.saveToken(user.token);
+          }
+          return user;
+        }
+      )
+    );
   }
 }

@@ -7,11 +7,12 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 
-import { routing } from "./app.routing";
+import { routing } from "./core/app.routing";
 import { AuthenticationService } from "./service/auth.service";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { CategoryService } from "./service/category.service";
+import { TokenStorage } from "./core/token.storage";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { CategoryService } from "./service/category.service";
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthenticationService, CategoryService],
+  providers: [AuthenticationService, CategoryService, TokenStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
