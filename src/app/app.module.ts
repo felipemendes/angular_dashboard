@@ -7,6 +7,12 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 
+import { routing } from "./app.routing";
+import { AuthenticationService } from "./service/auth.service";
+import { ReactiveFormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
+import { CategoryService } from "./service/category.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +22,12 @@ import { ListCategoryComponent } from './list-category/list-category.component';
     ListCategoryComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    routing,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthenticationService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
