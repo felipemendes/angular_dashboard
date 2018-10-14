@@ -1,11 +1,18 @@
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
 
 const TOKEN_KEY = 'AuthToken';
 
 @Injectable()
 export class TokenStorage {
 
-  constructor() { }
+  constructor(private router: Router) { }
+
+  checkToken() {
+    if (!this.getToken()) {
+      this.router.navigate(["login"]);
+    }
+  }
 
   signOut() {
     window.sessionStorage.removeItem(TOKEN_KEY);

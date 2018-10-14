@@ -14,6 +14,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { CategoryService } from "./service/category.service";
 import { TokenInterceptor } from "./core/token.inteceptor";
 import { TokenStorage } from "./core/token.storage";
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TokenStorage } from "./core/token.storage";
     LoginComponent,
     AddCategoryComponent,
     EditCategoryComponent,
-    ListCategoryComponent
+    ListCategoryComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

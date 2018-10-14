@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TokenStorage } from './core/token.storage';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'purai-angular-dashboard';
+
+  constructor(private token: TokenStorage) { }
+
+  ngOnInit() {
+    this.token.checkToken();
+  }
+
 }
