@@ -1,3 +1,29 @@
-<p>
-  list-category works!
-</p>
+<div class="col-12">
+    <h2>Category Details</h2>
+    <button class="btn btn-primary" (click)="addCategory()">Add Category</button>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>UUID</th>
+                <th>Status</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let category of categories">
+            <td>{{category.id}}</td>
+            <td>{{category.uuid}}</td>
+            <td>{{category.status}}</td>
+            <td>{{category.title}}</td>
+            <td>{{category.url_image}}</td>
+            <td>
+                <button class="btn btn-danger" (click)="deleteCategory(category)">Delete</button>
+                <button class="btn btn-primary" (click)="editCategory(category)">Edit</button>
+            </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
