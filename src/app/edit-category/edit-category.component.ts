@@ -34,7 +34,7 @@ export class EditCategoryComponent implements OnInit {
 
     this.categoryService.getCategoryByUuid(categoryUuid)
       .subscribe( data => {
-        this.editForm.setValue(data.categories[0]);
+        this.editForm.setValue(data["categories"][0]);
       });
   }
 
