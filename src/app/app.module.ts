@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 import { LoginComponent } from './login/login.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
@@ -15,6 +18,7 @@ import { CategoryService } from "./service/category.service";
 import { TokenInterceptor } from "./core/token.inteceptor";
 import { TokenStorage } from "./core/token.storage";
 import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -23,9 +27,11 @@ import { HeaderComponent } from './header/header.component';
     AddCategoryComponent,
     EditCategoryComponent,
     ListCategoryComponent,
-    HeaderComponent
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
+    ModalModule.forRoot(),
     BrowserModule,
     routing,
     ReactiveFormsModule,
