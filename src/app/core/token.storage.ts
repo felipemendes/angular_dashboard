@@ -11,6 +11,8 @@ export class TokenStorage {
   checkToken() {
     if (!this.getToken()) {
       this.router.navigate(["login"]);
+    } else {
+      this.router.navigate(["list-category"]);
     }
   }
 
