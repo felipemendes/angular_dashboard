@@ -24,6 +24,7 @@ import { TokenStorage } from "./core/token.storage";
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddSalePlaceComponent } from './add-sale-place/add-sale-place.component';
+import { EditSalePlaceComponent } from './edit-sale-place/edit-sale-place.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { AddSalePlaceComponent } from './add-sale-place/add-sale-place.component
     HeaderComponent,
     SidebarComponent,
     ListSalePlaceComponent,
-    AddSalePlaceComponent
+    AddSalePlaceComponent,
+    EditSalePlaceComponent
   ],
   imports: [
     ModalModule.forRoot(),
