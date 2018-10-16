@@ -1,18 +1,17 @@
 <div class="col-12">
-    <h2 class="text-center">Edit Category</h2>
+    <h2 class="text-center">Editing category</h2>
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
-            <label for="id">ID</label>
-            <input formControlName="id" placeholder="Event ID" name="id" class="form-control" id="id">
+            <input type="hidden" formControlName="id" placeholder="Event ID" name="id" class="form-control" id="id" readonly>
         </div>
 
         <div class="form-group">
             <label for="uuid">UUID</label>
-            <input formControlName="uuid" placeholder="Event UUID" name="uuid" class="form-control" id="uuid">
+            <input formControlName="uuid" placeholder="Event UUID" name="uuid" class="form-control" id="uuid" readonly>
         </div>
         <div class="form-group">
             <label for="status">Status</label>
-            <input type="number" formControlName="status" placeholder="Event status" name="status" class="form-control" id="status">
+            <input type="checkbox" formControlName="status" placeholder="Event status" name="status" class="form-control" id="status">
         </div>
 
         <div class="form-group">
@@ -25,6 +24,6 @@
             <input formControlName="url_image" placeholder="Event image" name="url_image" class="form-control" id="url_image">
         </div>
 
-        <button class="btn btn-success">Update Event</button>
+        <button class="btn btn-success">Update</button>
     </form>
 </div>
