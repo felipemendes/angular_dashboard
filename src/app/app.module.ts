@@ -6,15 +6,19 @@ import { AppComponent } from './app.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { LoginComponent } from './login/login.component';
+
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
+import { CategoryService } from "./service/category.service";
+
+import { ListSalePlaceComponent } from './list-sale-place/list-sale-place.component';
+import { SalePlaceService } from './service/salePlace.service';
 
 import { routing } from "./core/app.routing";
 import { AuthenticationService } from "./service/auth.service";
 import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { CategoryService } from "./service/category.service";
 import { TokenInterceptor } from "./core/token.inteceptor";
 import { TokenStorage } from "./core/token.storage";
 import { HeaderComponent } from './header/header.component';
@@ -28,7 +32,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     EditCategoryComponent,
     ListCategoryComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ListSalePlaceComponent
   ],
   imports: [
     ModalModule.forRoot(),
@@ -40,6 +45,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   providers: [
     AuthenticationService,
     CategoryService,
+    SalePlaceService,
     TokenStorage,
     {
       provide: HTTP_INTERCEPTORS,

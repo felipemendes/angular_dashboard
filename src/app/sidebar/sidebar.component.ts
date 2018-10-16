@@ -17,4 +17,8 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['list-category']);
   };
 
+  salePlace(): void {
+    this.router.navigate(['list-sale-place']);
+  };
+
 }
