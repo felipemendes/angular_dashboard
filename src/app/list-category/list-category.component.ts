@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { CategoryService } from "../service/category.service";
 import { Category } from "../model/category.model";
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-category',
@@ -12,11 +11,10 @@ import { Title } from '@angular/platform-browser';
 export class ListCategoryComponent implements OnInit {
 
   categories: Category[];
-
-  constructor(private title: Title, private router: Router, private categoryService: CategoryService) { }
+  panelOpenState = false;
+  constructor(private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit() {
-    this.title.setTitle("Categorias");
     this.categoryService.getCategories()
       .subscribe( data => {
         this.categories = data["categories"];

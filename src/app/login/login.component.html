@@ -1,30 +1,32 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-  <div>
-    <h1>PurAí Dashboard</h1>
-    <p>As melhores festas e eventos você encontra aqui!</p>
+<mat-card class="material-card box-shadow login-card">
+  <div class="header-info">
+    <h1>PurAí</h1>
+    <h5>As melhores festas e eventos você encontra aqui!</h5>
   </div>
+  <mat-card-content>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="loginError">
+        <div class="mat-raised-button mat-warn full-width">{{loginErrorMessage}}</div>
+      </div>
 
-  <div *ngIf="loginError">
-    <div>{{loginErrorMessage}}</div>
-  </div>
+      <mat-form-field class="full-width">
+        <input matInput type="email" id="email" formControlName="email" placeholder="Email address" required="" autofocus="">
+      </mat-form-field>
 
-  <div>
-    <input type="email" id="email" formControlName="email" placeholder="Email address" required="" autofocus="">
-    <label for="email">Email address</label>
-  </div>
+      <mat-form-field class="full-width">
+        <input matInput type="password" id="password" formControlName="password" placeholder="Password" required="">
+      </mat-form-field>
 
-  <div>
-    <input type="password" id="password" formControlName="password" placeholder="Password" required="">
-    <label for="password">Password</label>
-  </div>
+      <div>
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
 
-  <div>
-    <label>
-      <input type="checkbox" value="remember-me"> Remember me
-    </label>
-  </div>
-
-  <button>Sign in</button>
-
-</form>
+      <div class="header-buttons">
+        <button mat-raised-button color="primary" class="button-item">Sign in</button>
+        <a mat-raised-button class="button-item">Sign up</a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -1,14 +1,20 @@
-<div>
-  <h4>Sale Places</h4>
-  <button (click)="addSalePlace()">New Sale Places</button>
-</div>
-
-<div *ngFor="let salePlace of salePlaces">
-  <div>
-    <div>
-      <strong>{{salePlace.title}}</strong>
-      <a (click)="editSalePlace(salePlace)">Edit</a>
+<header class="docs-header-background">
+  <div class="docs-header-section">
+    <div class="docs-header-headline">
+      <h1 class="mat-h1">Locais de venda</h1>
     </div>
-    <span>{{salePlace.status}}</span>
+    <div class="docs-header-start">
+      <button mat-raised-button>Basic</button>
+    </div>
   </div>
-</div>
+</header>
+
+<mat-list>
+  <mat-list-item *ngFor="let salePlace of salePlaces">
+    <mat-icon mat-list-icon>folder</mat-icon>
+    <h4 mat-line>{{salePlace.title}}</h4>
+    <p mat-line>{{salePlace.status}}</p>
+    <a (click)="editSalePlace(salePlace)">EDIT</a>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>
