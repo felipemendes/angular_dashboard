@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { CategoryService } from "../service/category.service";
 import { Category } from "../model/category.model";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-list-category',
@@ -12,9 +13,10 @@ export class ListCategoryComponent implements OnInit {
 
   categories: Category[];
 
-  constructor(private router: Router, private categoryService: CategoryService) { }
+  constructor(private title: Title, private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit() {
+    this.title.setTitle("Categorias");
     this.categoryService.getCategories()
       .subscribe( data => {
         this.categories = data["categories"];
@@ -23,7 +25,7 @@ export class ListCategoryComponent implements OnInit {
 
   deleteCategory(category: Category): void {
     this.categoryService.deleteCategory(category.uuid)
-      .subscribe( data => {
+      .subscribe( (w) => {
         this.categories = this.categories.filter(u => u !== category);
       })
   };

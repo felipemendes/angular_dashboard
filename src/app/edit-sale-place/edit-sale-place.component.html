@@ -1,29 +1,29 @@
-<div class="col-12">
-    <h2 class="text-center">Editing sale place</h2>
-    <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <input type="hidden" formControlName="id" placeholder="Event ID" name="id" class="form-control" id="id" readonly>
-        </div>
+<div>
+  <h4>Editing sale place</h4>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <div>
+      <input type="hidden" formControlName="id" placeholder="Event ID" name="id" id="id" readonly>
+    </div>
 
-        <div class="form-group">
-            <label for="uuid">UUID</label>
-            <input formControlName="uuid" placeholder="Event UUID" name="uuid" class="form-control" id="uuid" readonly>
-        </div>
-        <div class="form-group">
-            <label for="status">Status</label>
-            <input type="checkbox" formControlName="status" placeholder="Event status" name="status" class="form-control" id="status">
-        </div>
+    <div>
+      <label for="uuid">UUID</label>
+      <input formControlName="uuid" placeholder="Event UUID" name="uuid" id="uuid" readonly>
+    </div>
+    <div>
+      <label for="status">Status</label>
+      <input type="checkbox" formControlName="status" placeholder="Event status" name="status" id="status">
+    </div>
 
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input formControlName="title" placeholder="Title" name="title" class="form-control" id="title">
-        </div>
+    <div>
+      <label for="title">Title</label>
+      <input formControlName="title" placeholder="Title" name="title" id="title">
+    </div>
 
-        <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input formControlName="phone" placeholder="(XX) XXXX-XXXX" name="phone" class="form-control" id="phone">
-        </div>
+    <div>
+      <label for="phone">Phone Number</label>
+      <input formControlName="phone" placeholder="(XX) XXXX-XXXX" name="phone" id="phone">
+    </div>
 
-        <button class="btn btn-success">Update</button>
-    </form>
+    <button>Update</button>
+  </form>
 </div>

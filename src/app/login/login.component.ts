@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe(
-      data => {
+      () => {
         this.router.navigate(['list-category']);
       },
       error => {

@@ -1,21 +1,21 @@
-<div class="col-12">
-    <h2 class="text-center">Add Sale Place</h2>
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="status">Status</label>
-            <input type="checkbox" formControlName="status" placeholder="Sale Place status" name="status" class="form-control" id="status">
-        </div>
+<div>
+  <h4>Add Sale Place</h4>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="status">Status</label>
+      <input type="checkbox" formControlName="status" placeholder="Sale Place status" name="status" id="status">
+    </div>
 
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input formControlName="title" placeholder="Sale Place title" name="title" class="form-control" id="title">
-        </div>
+    <div>
+      <label for="title">Title</label>
+      <input formControlName="title" placeholder="Sale Place title" name="title" id="title">
+    </div>
 
-        <div class="form-group">
-            <label for="phone">Phone number</label>
-            <input formControlName="phone" placeholder="(XX) XXXX-XXXX" name="phone" class="form-control" id="phone">
-        </div>
+    <div>
+      <label for="phone">Phone number</label>
+      <input formControlName="phone" placeholder="(XX) XXXX-XXXX" name="phone" id="phone">
+    </div>
 
-        <button class="btn btn-success">Add Sale Place</button>
-    </form>
+    <button>Add Sale Place</button>
+  </form>
 </div>

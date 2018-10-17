@@ -42,7 +42,7 @@ export class EditCategoryComponent implements OnInit {
     this.categoryService.updateCategory(this.editForm.value)
       .pipe(first())
       .subscribe(
-        data => {
+        () => {
           this.router.navigate(['list-category']);
         },
         error => {

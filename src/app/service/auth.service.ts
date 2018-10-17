@@ -4,10 +4,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenStorage } from '../core/token.storage';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable()
 export class AuthenticationService {
   constructor(private http: HttpClient, private token: TokenStorage) {

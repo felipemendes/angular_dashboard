@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule } from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 
@@ -12,6 +12,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { CategoryService } from "./service/category.service";
 
+import { AddSalePlaceComponent } from './add-sale-place/add-sale-place.component';
+import { EditSalePlaceComponent } from './edit-sale-place/edit-sale-place.component';
 import { ListSalePlaceComponent } from './list-sale-place/list-sale-place.component';
 import { SalePlaceService } from './service/salePlace.service';
 
@@ -21,10 +23,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { TokenInterceptor } from "./core/token.inteceptor";
 import { TokenStorage } from "./core/token.storage";
-import { HeaderComponent } from './header/header.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { AddSalePlaceComponent } from './add-sale-place/add-sale-place.component';
-import { EditSalePlaceComponent } from './edit-sale-place/edit-sale-place.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -33,18 +33,23 @@ import { EditSalePlaceComponent } from './edit-sale-place/edit-sale-place.compon
     AddCategoryComponent,
     EditCategoryComponent,
     ListCategoryComponent,
-    HeaderComponent,
-    SidebarComponent,
     ListSalePlaceComponent,
     AddSalePlaceComponent,
     EditSalePlaceComponent
   ],
   imports: [
-    ModalModule.forRoot(),
     BrowserModule,
     routing,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule
   ],
   providers: [
     AuthenticationService,

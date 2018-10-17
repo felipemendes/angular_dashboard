@@ -1,21 +1,19 @@
-<div class="col-12">
-    <h2 class="text-center">Add Category</h2>
-    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="status">Status</label>
-            <input type="number" formControlName="status" placeholder="Event status" name="status" class="form-control" id="status">
-        </div>
+<h4>Add Category</h4>
+<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="status">Status</label>
+    <input type="number" formControlName="status" placeholder="Event status" name="status" id="status">
+  </div>
 
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input formControlName="title" placeholder="Event title" name="title" class="form-control" id="title">
-        </div>
+  <div>
+    <label for="title">Title</label>
+    <input formControlName="title" placeholder="Event title" name="title" id="title">
+  </div>
 
-        <div class="form-group">
-            <label for="url_image">Image</label>
-            <input formControlName="url_image" placeholder="Event image" name="url_image" class="form-control" id="url_image">
-        </div>
+  <div>
+    <label for="url_image">Image</label>
+    <input formControlName="url_image" placeholder="Event image" name="url_image" id="url_image">
+  </div>
 
-        <button class="btn btn-success">Add Event</button>
-    </form>
-</div>
+  <button>Add Event</button>
+</form>

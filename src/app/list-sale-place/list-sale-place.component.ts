@@ -23,7 +23,7 @@ export class ListSalePlaceComponent implements OnInit {
 
   deleteSalePlace(salePlace: SalePlace): void {
     this.salePlaceService.deleteSalePlace(salePlace.uuid)
-      .subscribe( data => {
+      .subscribe( () => {
         this.salePlaces = this.salePlaces.filter(u => u !== salePlace);
       })
   };

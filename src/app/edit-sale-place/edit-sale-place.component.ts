@@ -42,7 +42,7 @@ export class EditSalePlaceComponent implements OnInit {
     this.salePlaceService.updateSalePlace(this.editForm.value)
       .pipe(first())
       .subscribe(
-        data => {
+        () => {
           this.router.navigate(['list-sale-place']);
         },
         error => {

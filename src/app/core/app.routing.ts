@@ -17,11 +17,11 @@ const routes: Routes = [
   { path: 'list-category', component: ListCategoryComponent },
   { path: 'edit-category', component: EditCategoryComponent },
 
-  { path: 'list-sale-place', component: ListSalePlaceComponent},
-  { path: 'add-sale-place', component: AddSalePlaceComponent},
-  { path: 'edit-sale-place', component: EditSalePlaceComponent},
+  { path: 'list-sale-place', component: ListSalePlaceComponent },
+  { path: 'add-sale-place', component: AddSalePlaceComponent },
+  { path: 'edit-sale-place', component: EditSalePlaceComponent },
   
-  {path : '', component : LoginComponent}
+  { path : '', component : LoginComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
