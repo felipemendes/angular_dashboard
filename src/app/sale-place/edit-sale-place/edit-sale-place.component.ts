@@ -29,7 +29,7 @@ export class EditSalePlaceComponent implements OnInit {
       uuid: [],
       status: ['', Validators.required],
       title: ['', Validators.required],
-      phone: ['', Validators.required]
+      phone: ['']
     });
 
     this.salePlaceService.getSalePlaceByUuid(salePlaceUuid, parseInt(salePlaceStatus))
@@ -39,6 +39,10 @@ export class EditSalePlaceComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.editForm.invalid) {
+      return;
+    }
+
     this.salePlaceService.updateSalePlace(this.editForm.value)
       .pipe(first())
       .subscribe(

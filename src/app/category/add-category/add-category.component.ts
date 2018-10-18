@@ -26,6 +26,10 @@ export class AddCategoryComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.addForm.invalid) {
+      return;
+    }
+
     this.categoryService.createCategory(this.addForm.value)
       .subscribe(
         () => {

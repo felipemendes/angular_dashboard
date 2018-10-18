@@ -39,6 +39,10 @@ export class EditCategoryComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.editForm.invalid) {
+      return;
+    }
+
     this.categoryService.updateCategory(this.editForm.value)
       .pipe(first())
       .subscribe(

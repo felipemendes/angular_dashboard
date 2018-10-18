@@ -20,11 +20,15 @@ export class AddSalePlaceComponent implements OnInit {
       uuid: [],
       status: ['', Validators.required],
       title: ['', Validators.required],
-      phone: ['', Validators.required]
+      phone: ['']
     });
   }
 
   onSubmit() {
+    if (this.addForm.invalid) {
+      return;
+    }
+
     this.salePlaceService.createSalePlace(this.addForm.value)
       .subscribe(
         () => {
