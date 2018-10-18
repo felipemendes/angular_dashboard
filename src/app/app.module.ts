@@ -25,6 +25,7 @@ import { TokenInterceptor } from "./core/token.inteceptor";
 import { TokenStorage } from "./core/token.storage";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { DeleteConfirmDialogComponent } from './shared/delete-confirm-dialog/delete-confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     ListCategoryComponent,
     ListSalePlaceComponent,
     AddSalePlaceComponent,
-    EditSalePlaceComponent
+    EditSalePlaceComponent,
+    DeleteConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,9 @@ import { LayoutModule } from '@angular/cdk/layout';
       multi : true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DeleteConfirmDialogComponent
+  ]
 })
 export class AppModule { }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { CategoryService } from "../../service/category.service";
 import { Category } from "../../model/category.model";
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({
   selector: 'app-list-category',
@@ -11,7 +13,7 @@ import { Category } from "../../model/category.model";
 export class ListCategoryComponent implements OnInit {
 
   categories: Category[];
-  constructor(private router: Router, private categoryService: CategoryService) { }
+  constructor(private router: Router, private categoryService: CategoryService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.categoryService.getCategories()
@@ -21,10 +23,25 @@ export class ListCategoryComponent implements OnInit {
   }
 
   deleteCategory(category: Category): void {
-    this.categoryService.deleteCategory(category.uuid)
-      .subscribe( (w) => {
-        this.categories = this.categories.filter(u => u !== category);
-      })
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+        title: 'Are you sure you want to delete it?',
+        content: ''
+    };
+
+    const dialogReference = this.dialog.open(DeleteConfirmDialogComponent, dialogConfig);
+    dialogReference.afterClosed().subscribe(result => {
+      if (result == true) {
+        this.categoryService.deleteCategory(category.uuid)
+        .subscribe( (w) => {
+          this.categories = this.categories.filter(u => u !== category);
+        })
+      }
+    });
+    
   };
 
   editCategory(category: Category): void {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { SalePlaceService } from "../../service/salePlace.service";
 import { SalePlace } from '../../model/salePlace.model';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({
   selector: 'app-list-sale-place',
@@ -12,7 +14,7 @@ export class ListSalePlaceComponent implements OnInit {
 
   salePlaces: SalePlace[];
 
-  constructor(private router: Router, private salePlaceService: SalePlaceService) { }
+  constructor(private router: Router, private salePlaceService: SalePlaceService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.salePlaceService.getSalePlaces()
@@ -22,10 +24,25 @@ export class ListSalePlaceComponent implements OnInit {
   }
 
   deleteSalePlace(salePlace: SalePlace): void {
-    this.salePlaceService.deleteSalePlace(salePlace.uuid)
-      .subscribe( () => {
-        this.salePlaces = this.salePlaces.filter(u => u !== salePlace);
-      })
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+        title: 'Are you sure you want to delete it?',
+        content: ''
+    };
+
+    const dialogReference = this.dialog.open(DeleteConfirmDialogComponent, dialogConfig);
+    dialogReference.afterClosed().subscribe(result => {
+      if (result == true) {
+        this.salePlaceService.deleteSalePlace(salePlace.uuid)
+          .subscribe( () => {
+            this.salePlaces = this.salePlaces.filter(u => u !== salePlace);
+          })
+      }
+    });
+    
   };
 
   editSalePlace(salePlace: SalePlace): void {
