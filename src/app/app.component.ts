@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 import { Router, NavigationStart } from '@angular/router';
 import { TokenStorage } from './core/token.storage';
+import { CategoryService } from "./service/category.service";
+import { SalePlaceService } from "./service/salePlace.service";
 
 @Component({
   selector: 'app-root',
@@ -11,11 +13,17 @@ import { TokenStorage } from './core/token.storage';
 })
 export class AppComponent {
 
-  title = 'purai-angular-dashboard';
   showHeader: boolean = false;
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
-  constructor(private token: TokenStorage, private router: Router, private breakpointObserver: BreakpointObserver) { 
+  countCategories = 0;
+  countSalePlaces = 0;
+
+  constructor(private token: TokenStorage, 
+              private router: Router, 
+              private breakpointObserver: BreakpointObserver, 
+              private categoryService: CategoryService,
+              private salePlaceService: SalePlaceService) { 
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (event['url'] == '/login') {
@@ -29,6 +37,17 @@ export class AppComponent {
 
   ngOnInit() {
     this.token.checkToken();
+
+    this.categoryService.getCategories()
+      .subscribe( data => { 
+        this.countCategories = data["categories"].length;
+      });
+
+    this.salePlaceService.getSalePlaces()
+      .subscribe( data => { 
+        this.countSalePlaces = data["sale_places"].length;
+      });
+    
   }
 
   signOut(): void {

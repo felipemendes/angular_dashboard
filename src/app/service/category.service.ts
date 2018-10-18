@@ -14,7 +14,6 @@ export class CategoryService {
   }
 
   getCategoryByUuid(uuid: string) {
-    console.log(this.baseUrl + '/?uuid=' + uuid);
     return this.http.get<Category>(this.baseUrl + '/?uuid=' + uuid);
   }
 

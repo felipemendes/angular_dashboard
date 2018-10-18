@@ -3,8 +3,16 @@
     [mode]="(isHandset | async)!.matches ? 'over' : 'side'" [opened]="!(isHandset | async)!.matches">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item (click)="category()">Categories</a>
-      <a mat-list-item (click)="salePlace()">Sale Places</a>
+      <a mat-list-item (click)="category()">
+        <span matBadge="{{countCategories}}" matBadgeOverlap="false" matBadgeColor="accent">
+          Categories
+        </span>
+      </a>
+      <a mat-list-item (click)="salePlace()">
+        <span matBadge="{{countSalePlaces}}" matBadgeOverlap="false" matBadgeColor="accent">
+          Sale Places
+        </span>
+      </a>
       <a mat-list-item (click)="signOut()">Sign out</a>
     </mat-nav-list>
   </mat-sidenav>

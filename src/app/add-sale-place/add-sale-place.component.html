@@ -1,21 +1,24 @@
-<div>
-  <h4>Add Sale Place</h4>
+<header class="docs-header-background">
+  <div class="docs-header-section">
+    <div class="docs-header-headline">
+      <h1 class="mat-h1">Add Sale Place</h1>
+    </div>
+  </div>
+</header>
+
+<mat-card class="material-card box-shadow sale-place-card">
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="status">Status</label>
-      <input type="checkbox" formControlName="status" placeholder="Sale Place status" name="status" id="status">
-    </div>
 
-    <div>
-      <label for="title">Title</label>
-      <input formControlName="title" placeholder="Sale Place title" name="title" id="title">
-    </div>
+    <mat-checkbox formControlName="status" name="status" id="status">Status</mat-checkbox>
 
-    <div>
-      <label for="phone">Phone number</label>
-      <input formControlName="phone" placeholder="(XX) XXXX-XXXX" name="phone" id="phone">
-    </div>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
+    </mat-form-field>
 
-    <button>Add Sale Place</button>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="phone" placeholder="(XX) XXXX-XXXX" name="phone" id="phone" required="">
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" class="button-item">Save</button>
   </form>
-</div>
+</mat-card>

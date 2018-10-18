@@ -1,19 +1,24 @@
-<h4>Add Category</h4>
-<form [formGroup]="addForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="status">Status</label>
-    <input type="number" formControlName="status" placeholder="Event status" name="status" id="status">
+<header class="docs-header-background">
+  <div class="docs-header-section">
+    <div class="docs-header-headline">
+      <h1 class="mat-h1">Add Category</h1>
+    </div>
   </div>
+</header>
 
-  <div>
-    <label for="title">Title</label>
-    <input formControlName="title" placeholder="Event title" name="title" id="title">
-  </div>
+<mat-card class="material-card box-shadow category-card">
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
 
-  <div>
-    <label for="url_image">Image</label>
-    <input formControlName="url_image" placeholder="Event image" name="url_image" id="url_image">
-  </div>
+    <mat-checkbox formControlName="status" name="status" id="status">Status</mat-checkbox>
+    
+    <mat-form-field class="full-width">
+      <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
+    </mat-form-field>
 
-  <button>Add Event</button>
-</form>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="url_image" placeholder="Image" name="url_image" id="url_image" required="">
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" class="button-item">Save</button>
+  </form>
+</mat-card>

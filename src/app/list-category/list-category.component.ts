@@ -11,7 +11,6 @@ import { Category } from "../model/category.model";
 export class ListCategoryComponent implements OnInit {
 
   categories: Category[];
-  panelOpenState = false;
   constructor(private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit() {

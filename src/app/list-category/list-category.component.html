@@ -1,10 +1,10 @@
 <header class="docs-header-background">
   <div class="docs-header-section">
     <div class="docs-header-headline">
-      <h1 class="mat-h1">Categorias</h1>
+      <h1 class="mat-h1">Categories</h1>
     </div>
     <div class="docs-header-start">
-      <button mat-raised-button>Basic</button>
+      <button mat-raised-button (click)="addCategory()">ADD NEW</button>
     </div>
   </div>
 </header>
@@ -13,11 +13,19 @@
   <mat-card-header>
     <div mat-card-avatar class="material-header-image"></div>
     <mat-card-title>{{category.title}}</mat-card-title>
-    <mat-card-subtitle>{{category.status}}</mat-card-subtitle>
+    
+    <mat-card-subtitle *ngIf="category.status == 1;then active else inactive"></mat-card-subtitle>
+    <ng-template #active>
+      <mat-card-subtitle>Active</mat-card-subtitle>
+    </ng-template>
+    <ng-template #inactive>
+      <mat-card-subtitle>Inative</mat-card-subtitle>
+    </ng-template>
+
   </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="{{category.title}}">
   <mat-card-actions>
-    <button mat-button (click)="editCategory(category)">EDIT</button>
-    <button mat-button (click)="deleteCategory(category)">DELETE</button>
+    <button mat-button (click)="editCategory(category)" color="primary">EDIT</button>
+    <button mat-button (click)="deleteCategory(category)" color="warn">DELETE</button>
   </mat-card-actions>
 </mat-card>

@@ -1,10 +1,10 @@
 <header class="docs-header-background">
   <div class="docs-header-section">
     <div class="docs-header-headline">
-      <h1 class="mat-h1">Locais de venda</h1>
+      <h1 class="mat-h1">Sale Places</h1>
     </div>
     <div class="docs-header-start">
-      <button mat-raised-button>Basic</button>
+        <button mat-raised-button (click)="addSalePlace()">ADD NEW</button>
     </div>
   </div>
 </header>
@@ -13,8 +13,17 @@
   <mat-list-item *ngFor="let salePlace of salePlaces">
     <mat-icon mat-list-icon>folder</mat-icon>
     <h4 mat-line>{{salePlace.title}}</h4>
-    <p mat-line>{{salePlace.status}}</p>
-    <a (click)="editSalePlace(salePlace)">EDIT</a>
+
+    <p mat-line *ngIf="salePlace.status == 1;then active else inactive"></p>
+    <ng-template #active>
+      <p mat-line>Active</p>
+    </ng-template>
+    <ng-template #inactive>
+      <p mat-line>Inative</p>
+    </ng-template>
+
+    <a mat-button (click)="editSalePlace(salePlace)" color="primary">EDIT</a>
+    <a mat-button (click)="deleteSalePlace(salePlace)" color="warn">DELETE</a>
   </mat-list-item>
   <mat-divider></mat-divider>
 </mat-list>

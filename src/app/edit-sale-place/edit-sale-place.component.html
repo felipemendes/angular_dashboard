@@ -1,29 +1,29 @@
-<div>
-  <h4>Editing sale place</h4>
+<header class="docs-header-background">
+  <div class="docs-header-section">
+    <div class="docs-header-headline">
+      <h1 class="mat-h1">Edit Sale Place</h1>
+    </div>
+  </div>
+</header>
+
+<mat-card class="material-card box-shadow sale-place-card">
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-    <div>
-      <input type="hidden" formControlName="id" placeholder="Event ID" name="id" id="id" readonly>
-    </div>
 
-    <div>
-      <label for="uuid">UUID</label>
-      <input formControlName="uuid" placeholder="Event UUID" name="uuid" id="uuid" readonly>
-    </div>
-    <div>
-      <label for="status">Status</label>
-      <input type="checkbox" formControlName="status" placeholder="Event status" name="status" id="status">
-    </div>
+    <mat-form-field class="full-width">
+      <input type="hidden" formControlName="id" placeholder="ID" name="id" id="id" readonly>
+      <input matInput formControlName="uuid" placeholder="UUID (for reference only)" name="uuid" id="uuid" readonly style="color: #bbbbbb;">
+    </mat-form-field>
 
-    <div>
-      <label for="title">Title</label>
-      <input formControlName="title" placeholder="Title" name="title" id="title">
-    </div>
+    <mat-checkbox formControlName="status" name="status" id="status">Status</mat-checkbox>
 
-    <div>
-      <label for="phone">Phone Number</label>
-      <input formControlName="phone" placeholder="(XX) XXXX-XXXX" name="phone" id="phone">
-    </div>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
+    </mat-form-field>
 
-    <button>Update</button>
+    <mat-form-field class="full-width">
+      <input matInput formControlName="phone" placeholder="(XX) XXXX-XXXX" name="phone" id="phone" required="">
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" class="button-item">Save</button>
   </form>
-</div>
+</mat-card>

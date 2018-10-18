@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatInputModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatBadgeModule, MatCheckboxModule } from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 
@@ -50,7 +50,10 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatIconModule,
     MatListModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatBadgeModule,
+    MatCheckboxModule
   ],
   providers: [
     AuthenticationService,

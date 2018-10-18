@@ -8,13 +8,13 @@ a {
 }
 
 .box-shadow {
-  box-shadow: 0 0.25rem 0.75rem rgba(4, 4, 4, 0.16) !important;
+  box-shadow: 0 0.25rem 1rem rgba(4, 4, 4, 0.16) !important;
   -webkit-transition: box-shadow 0.2s !important;
   transition: box-shadow 0.2s !important;
 }
 
 .box-shadow:hover {
-  box-shadow: 0 0.05rem 0.25rem rgba(4, 4, 4, 0.16) !important;
+  box-shadow: 0 0.05rem 0.45rem rgba(4, 4, 4, 0.16) !important;
 }
 
 .mat-toolbar.mat-primary {

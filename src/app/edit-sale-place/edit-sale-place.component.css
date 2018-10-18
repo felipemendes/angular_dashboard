@@ -1,0 +1,13 @@
+.sale-place-card {
+  margin: 20px auto;
+  display: flex !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.mat-checkbox {
+  margin-bottom: 20px;
+  display: inline-block;
+}
