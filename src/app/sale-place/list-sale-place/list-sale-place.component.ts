@@ -8,7 +8,7 @@ import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog
 @Component({
   selector: 'app-list-sale-place',
   templateUrl: './list-sale-place.component.html',
-  styleUrls: ['./list-sale-place.component.css']
+  styleUrls: ['./list-sale-place.component.min.css']
 })
 export class ListSalePlaceComponent implements OnInit {
 

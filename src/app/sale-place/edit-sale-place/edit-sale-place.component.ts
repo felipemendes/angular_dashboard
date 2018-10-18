@@ -7,7 +7,7 @@ import { first } from 'rxjs/operators';
 @Component({
   selector: 'app-edit-sale-place',
   templateUrl: './edit-sale-place.component.html',
-  styleUrls: ['./edit-sale-place.component.css']
+  styleUrls: ['./edit-sale-place.component.min.css']
 })
 export class EditSalePlaceComponent implements OnInit {
 

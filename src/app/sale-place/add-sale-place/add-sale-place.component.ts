@@ -6,7 +6,7 @@ import { Router } from "@angular/router";
 @Component({
   selector: 'app-add-sale-place',
   templateUrl: './add-sale-place.component.html',
-  styleUrls: ['./add-sale-place.component.css']
+  styleUrls: ['./add-sale-place.component.min.css']
 })
 export class AddSalePlaceComponent implements OnInit {
 

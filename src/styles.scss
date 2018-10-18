@@ -1,4 +1,5 @@
 /* Utilities */
+
 body {
   margin: 0;
 }
@@ -11,10 +12,9 @@ a {
   box-shadow: 0 0.25rem 1rem rgba(4, 4, 4, 0.16) !important;
   -webkit-transition: box-shadow 0.2s !important;
   transition: box-shadow 0.2s !important;
-}
-
-.box-shadow:hover {
-  box-shadow: 0 0.05rem 0.45rem rgba(4, 4, 4, 0.16) !important;
+  &:hover {
+    box-shadow: 0 0.05rem 0.45rem rgba(4, 4, 4, 0.16) !important;
+  }
 }
 
 .mat-toolbar.mat-primary {
@@ -22,6 +22,7 @@ a {
 }
 
 /* Page Header */
+
 .docs-header-background {
   background: #3f51b5;
   overflow: hidden;
@@ -31,12 +32,11 @@ a {
 
 .docs-header-headline {
   color: #fff;
-}
-
-.docs-header-headline h1 {
-  font-size: 36px;
-  font-weight: 300;
-  line-height: 56px;
+  h1 {
+    font-size: 36px;
+    font-weight: 300;
+    line-height: 56px;
+  }
 }
 
 .docs-header-start, .docs-homepage-bottom-start {
@@ -44,6 +44,7 @@ a {
 }
 
 /* Card */
+
 .material-card {
   display: inline-block !important;
   max-width: 400px;
@@ -51,6 +52,6 @@ a {
 }
 
 .material-header-image {
-  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
 }

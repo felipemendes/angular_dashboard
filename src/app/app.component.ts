@@ -9,7 +9,7 @@ import { SalePlaceService } from "./service/salePlace.service";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.min.css']
 })
 export class AppComponent {
 
