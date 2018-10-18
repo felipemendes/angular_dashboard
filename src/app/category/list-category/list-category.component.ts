@@ -47,10 +47,21 @@ export class ListCategoryComponent implements OnInit {
   editCategory(category: Category): void {
     localStorage.removeItem("editCategoryUuid");
     localStorage.setItem("editCategoryUuid", category.uuid.toString());
+
+    localStorage.removeItem("editCategoryStatus");
+    localStorage.setItem("editCategoryStatus", category.status.toString());
+
     this.router.navigate(['edit-category']);
   };
 
   addCategory(): void {
     this.router.navigate(['add-category']);
+  };
+
+  showInactives(): void {
+    this.categoryService.getCategories(0)
+      .subscribe( data => {
+        this.categories = data["categories"];
+      });
   };
 }

@@ -48,11 +48,22 @@ export class ListSalePlaceComponent implements OnInit {
   editSalePlace(salePlace: SalePlace): void {
     localStorage.removeItem("editSalePlaceUuid");
     localStorage.setItem("editSalePlaceUuid", salePlace.uuid.toString());
+
+    localStorage.removeItem("editSalePlaceStatus");
+    localStorage.setItem("editSalePlaceStatus", salePlace.status.toString());
+
     this.router.navigate(['edit-sale-place']);
   };
 
   addSalePlace(): void {
     this.router.navigate(['add-sale-place']);
+  };
+
+  showInactives(): void {
+    this.salePlaceService.getSalePlaces(0)
+      .subscribe( data => {
+        this.salePlaces = data["sale_places"];
+      });
   };
 
 }

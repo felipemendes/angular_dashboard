@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from "../../service/category.service";
 import { Router } from "@angular/router";
-import { Category } from "../../model/category.model";
 import { FormBuilder, FormGroup, Validators}  from "@angular/forms";
 import { first } from 'rxjs/operators';
 
@@ -12,12 +11,13 @@ import { first } from 'rxjs/operators';
 })
 export class EditCategoryComponent implements OnInit {
 
-  category: Category;
   editForm: FormGroup;
   constructor(private formBuilder: FormBuilder,private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit() {
     let categoryUuid = localStorage.getItem("editCategoryUuid");
+    let categoryStatus = localStorage.getItem("editCategoryStatus");
+
     if(!categoryUuid) {
       alert("Invalid action.")
       this.router.navigate(['list-category']);
@@ -32,7 +32,7 @@ export class EditCategoryComponent implements OnInit {
       url_image: ['', Validators.required]
     });
 
-    this.categoryService.getCategoryByUuid(categoryUuid)
+    this.categoryService.getCategoryByUuid(categoryUuid, parseInt(categoryStatus))
       .subscribe( data => {
         this.editForm.setValue(data["categories"][0]);
       });

@@ -8,13 +8,12 @@ export class SalePlaceService {
 
   baseUrl: string = 'http://localhost:3000/salePlaces';
 
-  getSalePlaces() {
-    return this.http.get<SalePlace[]>(this.baseUrl);
+  getSalePlaces(status: number = 1) {
+    return this.http.get<SalePlace[]>(this.baseUrl + '/?status=' + status);
   }
 
-  getSalePlaceByUuid(uuid: string) {
-    console.log(this.baseUrl + '/?uuid=' + uuid);
-    return this.http.get<SalePlace>(this.baseUrl + '/?uuid=' + uuid);
+  getSalePlaceByUuid(uuid: string, status: number = 1) {
+    return this.http.get<SalePlace>(this.baseUrl + '/?uuid=' + uuid + '&status=' + status);
   }
 
   createSalePlace(salePlace: SalePlace) {

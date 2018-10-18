@@ -5,6 +5,7 @@
     </div>
     <div class="docs-header-start">
         <button mat-raised-button (click)="addSalePlace()">ADD NEW</button>
+        <button mat-flat-button color="primary" (click)="showInactives()">Show inactives</button>
     </div>
   </div>
 </header>
@@ -16,10 +17,10 @@
 
     <p mat-line *ngIf="salePlace.status == 1;then active else inactive"></p>
     <ng-template #active>
-      <p mat-line>Active</p>
+      <p mat-line class="text-active">Active</p>
     </ng-template>
     <ng-template #inactive>
-      <p mat-line>Inative</p>
+      <p mat-line class="text-inactive">Inative</p>
     </ng-template>
 
     <a mat-button (click)="editSalePlace(salePlace)" color="primary">EDIT</a>

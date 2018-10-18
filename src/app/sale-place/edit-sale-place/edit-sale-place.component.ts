@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SalePlaceService } from "../../service/salePlace.service";
 import { Router } from "@angular/router";
-import { SalePlace } from "../../model/salePlace.model";
 import { FormBuilder, FormGroup, Validators}  from "@angular/forms";
 import { first } from 'rxjs/operators';
 
@@ -12,13 +11,14 @@ import { first } from 'rxjs/operators';
 })
 export class EditSalePlaceComponent implements OnInit {
 
-  salePlace: SalePlace;
   editForm: FormGroup;
   constructor(private formBuilder: FormBuilder,private router: Router, private salePlaceService: SalePlaceService) { }
 
   ngOnInit() {
     let salePlaceUuid = localStorage.getItem("editSalePlaceUuid");
-    if(!salePlaceUuid) {
+    let salePlaceStatus = localStorage.getItem("editSalePlaceStatus");
+
+    if (!salePlaceUuid || !salePlaceStatus) {
       alert("Invalid action.")
       this.router.navigate(['list-sale-place']);
       return;
@@ -32,7 +32,7 @@ export class EditSalePlaceComponent implements OnInit {
       phone: ['', Validators.required]
     });
 
-    this.salePlaceService.getSalePlaceByUuid(salePlaceUuid)
+    this.salePlaceService.getSalePlaceByUuid(salePlaceUuid, parseInt(salePlaceStatus))
       .subscribe( data => {
         this.editForm.setValue(data["sale_places"][0]);
       });

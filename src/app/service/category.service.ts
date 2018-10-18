@@ -9,12 +9,12 @@ export class CategoryService {
 
   baseUrl: string = 'http://localhost:3000/categories';
 
-  getCategories() {
-    return this.http.get<Category[]>(this.baseUrl);
+  getCategories(status: number = 1) {
+    return this.http.get<Category[]>(this.baseUrl + '/?status=' + status);
   }
 
-  getCategoryByUuid(uuid: string) {
-    return this.http.get<Category>(this.baseUrl + '/?uuid=' + uuid);
+  getCategoryByUuid(uuid: string, status: number = 1) {
+    return this.http.get<Category>(this.baseUrl + '/?uuid=' + uuid + '&status=' + status);
   }
 
   createCategory(category: Category) {

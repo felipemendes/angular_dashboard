@@ -5,6 +5,7 @@
     </div>
     <div class="docs-header-start">
       <button mat-raised-button (click)="addCategory()">ADD NEW</button>
+      <button mat-flat-button color="primary" (click)="showInactives()">Show inactives</button>
     </div>
   </div>
 </header>
@@ -16,10 +17,10 @@
     
     <mat-card-subtitle *ngIf="category.status == 1;then active else inactive"></mat-card-subtitle>
     <ng-template #active>
-      <mat-card-subtitle>Active</mat-card-subtitle>
+      <mat-card-subtitle class="text-active">Active</mat-card-subtitle>
     </ng-template>
     <ng-template #inactive>
-      <mat-card-subtitle>Inative</mat-card-subtitle>
+      <mat-card-subtitle class="text-inactive">Inative</mat-card-subtitle>
     </ng-template>
 
   </mat-card-header>
