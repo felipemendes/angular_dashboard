@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SalePlaceService } from "../service/salePlace.service";
+import { SalePlaceService } from "../../service/salePlace.service";
 import { Router } from "@angular/router";
-import { SalePlace } from "../model/salePlace.model";
+import { SalePlace } from "../../model/salePlace.model";
 import { FormBuilder, FormGroup, Validators}  from "@angular/forms";
 import { first } from 'rxjs/operators';
 

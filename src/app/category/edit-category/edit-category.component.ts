@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from "../service/category.service";
+import { CategoryService } from "../../service/category.service";
 import { Router } from "@angular/router";
-import { Category } from "../model/category.model";
+import { Category } from "../../model/category.model";
 import { FormBuilder, FormGroup, Validators}  from "@angular/forms";
 import { first } from 'rxjs/operators';
 

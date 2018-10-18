@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
-import { SalePlaceService } from "../service/salePlace.service";
-import { SalePlace } from '../model/salePlace.model';
+import { SalePlaceService } from "../../service/salePlace.service";
+import { SalePlace } from '../../model/salePlace.model';
 
 @Component({
   selector: 'app-list-sale-place',

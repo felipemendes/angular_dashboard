@@ -7,14 +7,14 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 
 import { LoginComponent } from './login/login.component';
 
-import { AddCategoryComponent } from './add-category/add-category.component';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
-import { ListCategoryComponent } from './list-category/list-category.component';
+import { AddCategoryComponent } from './category/add-category/add-category.component';
+import { EditCategoryComponent } from './category/edit-category/edit-category.component';
+import { ListCategoryComponent } from './category/list-category/list-category.component';
 import { CategoryService } from "./service/category.service";
 
-import { AddSalePlaceComponent } from './add-sale-place/add-sale-place.component';
-import { EditSalePlaceComponent } from './edit-sale-place/edit-sale-place.component';
-import { ListSalePlaceComponent } from './list-sale-place/list-sale-place.component';
+import { AddSalePlaceComponent } from './sale-place/add-sale-place/add-sale-place.component';
+import { EditSalePlaceComponent } from './sale-place/edit-sale-place/edit-sale-place.component';
+import { ListSalePlaceComponent } from './sale-place/list-sale-place/list-sale-place.component';
 import { SalePlaceService } from './service/salePlace.service';
 
 import { routing } from "./core/app.routing";
