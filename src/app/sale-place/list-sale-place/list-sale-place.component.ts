@@ -13,14 +13,30 @@ import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog
 export class ListSalePlaceComponent implements OnInit {
 
   salePlaces: SalePlace[];
+  currentPage = 0;
 
   constructor(private router: Router, private salePlaceService: SalePlaceService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.salePlaceService.getSalePlaces()
+    this.currentPage ++;
+    this.loadSalePlaces();
+  }
+
+  loadSalePlaces(status = 1) {
+    this.salePlaceService.getSalePlaces(status, this.currentPage)
       .subscribe( data => {
         this.salePlaces = data['sale_places'];
       });
+  }
+
+  previousPage() {
+    this.currentPage --;
+    this.loadSalePlaces();
+  }
+
+  nextPage() {
+    this.currentPage ++;
+    this.loadSalePlaces();
   }
 
   deleteSalePlace(salePlace: SalePlace): void {
@@ -60,10 +76,7 @@ export class ListSalePlaceComponent implements OnInit {
   }
 
   showInactives(): void {
-    this.salePlaceService.getSalePlaces(0)
-      .subscribe( data => {
-        this.salePlaces = data['sale_places'];
-      });
+    this.loadSalePlaces(0);
   }
 
 }

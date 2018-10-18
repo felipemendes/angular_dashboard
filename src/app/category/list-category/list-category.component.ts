@@ -13,13 +13,30 @@ import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog
 export class ListCategoryComponent implements OnInit {
 
   categories: Category[];
+  currentPage = 0;
+
   constructor(private router: Router, private categoryService: CategoryService, private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.categoryService.getCategories()
+    this.currentPage ++;
+    this.loadCategories();
+  }
+
+  loadCategories(status = 1) {
+    this.categoryService.getCategories(status, this.currentPage)
       .subscribe( data => {
         this.categories = data['categories'];
       });
+  }
+
+  previousPage() {
+    this.currentPage --;
+    this.loadCategories();
+  }
+
+  nextPage() {
+    this.currentPage ++;
+    this.loadCategories();
   }
 
   deleteCategory(category: Category): void {
@@ -36,7 +53,7 @@ export class ListCategoryComponent implements OnInit {
     dialogReference.afterClosed().subscribe(result => {
       if (result === true) {
         this.categoryService.deleteCategory(category.uuid)
-        .subscribe( (w) => {
+        .subscribe( () => {
           this.categories = this.categories.filter(u => u !== category);
         });
       }
@@ -59,9 +76,6 @@ export class ListCategoryComponent implements OnInit {
   }
 
   showInactives(): void {
-    this.categoryService.getCategories(0)
-      .subscribe( data => {
-        this.categories = data['categories'];
-      });
+    this.loadCategories(0);
   }
 }

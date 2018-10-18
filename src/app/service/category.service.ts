@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { TokenStorage } from '../core/token.storage';
 import { Category } from '../model/category.model';
 
 @Injectable()
 export class CategoryService {
-  constructor(private http: HttpClient, private token: TokenStorage) { }
+  constructor(private http: HttpClient) { }
 
   baseUrl: string = environment.baseUrl + '/categories';
 
-  getCategories(status: number = 1) {
-    return this.http.get<Category[]>(this.baseUrl + '/?status=' + status);
+  getCategories(status: number = 1, page: number = 1) {
+    return this.http.get<Category[]>(this.baseUrl + '/?status=' + status + '&page=' + page + '&limit=10');
   }
 
   getCategoryByUuid(uuid: string, status: number = 1) {
