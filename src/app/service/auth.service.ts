@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { TokenStorage } from '../core/token.storage';
@@ -15,7 +16,7 @@ export class AuthenticationService {
       password: password
     };
 
-    return this.http.post<any>('http://localhost:3000/login', credentials)
+    return this.http.post<any>(environment.baseUrl + '/login', credentials)
       .pipe(
         map(user => {
           if (user && user.token) {

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { SalePlace } from "../model/salePlace.model";
 
@@ -6,7 +7,7 @@ import { SalePlace } from "../model/salePlace.model";
 export class SalePlaceService {
   constructor(private http: HttpClient) { }
 
-  baseUrl: string = 'http://localhost:3000/salePlaces';
+  baseUrl: string = environment.baseUrl + '/salePlaces';
 
   getSalePlaces(status: number = 1) {
     return this.http.get<SalePlace[]>(this.baseUrl + '/?status=' + status);
