@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { CategoryService } from "../../service/category.service";
-import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CategoryService } from '../../service/category.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-category',
@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
 
 export class AddCategoryComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private categoryService: CategoryService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private categoryService: CategoryService) { }
 
   addForm: FormGroup;
 

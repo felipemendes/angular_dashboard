@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { AuthenticationService } from "../service/auth.service";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { AuthenticationService } from "../service/auth.service";
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  loginError: boolean = false;
+  loginError = false;
   loginErrorMessage: string;
   email: string;
   password: string;

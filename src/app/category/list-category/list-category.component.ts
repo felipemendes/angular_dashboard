@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { CategoryService } from "../../service/category.service";
-import { Category } from "../../model/category.model";
+import { Router } from '@angular/router';
+import { CategoryService } from '../../service/category.service';
+import { Category } from '../../model/category.model';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog/delete-confirm-dialog.component';
 
@@ -18,7 +18,7 @@ export class ListCategoryComponent implements OnInit {
   ngOnInit() {
     this.categoryService.getCategories()
       .subscribe( data => {
-        this.categories = data["categories"];
+        this.categories = data['categories'];
       });
   }
 
@@ -34,34 +34,34 @@ export class ListCategoryComponent implements OnInit {
 
     const dialogReference = this.dialog.open(DeleteConfirmDialogComponent, dialogConfig);
     dialogReference.afterClosed().subscribe(result => {
-      if (result == true) {
+      if (result === true) {
         this.categoryService.deleteCategory(category.uuid)
         .subscribe( (w) => {
           this.categories = this.categories.filter(u => u !== category);
-        })
+        });
       }
     });
-    
-  };
+
+  }
 
   editCategory(category: Category): void {
-    localStorage.removeItem("editCategoryUuid");
-    localStorage.setItem("editCategoryUuid", category.uuid.toString());
+    localStorage.removeItem('editCategoryUuid');
+    localStorage.setItem('editCategoryUuid', category.uuid.toString());
 
-    localStorage.removeItem("editCategoryStatus");
-    localStorage.setItem("editCategoryStatus", category.status.toString());
+    localStorage.removeItem('editCategoryStatus');
+    localStorage.setItem('editCategoryStatus', category.status.toString());
 
     this.router.navigate(['edit-category']);
-  };
+  }
 
   addCategory(): void {
     this.router.navigate(['add-category']);
-  };
+  }
 
   showInactives(): void {
     this.categoryService.getCategories(0)
       .subscribe( data => {
-        this.categories = data["categories"];
+        this.categories = data['categories'];
       });
-  };
+  }
 }

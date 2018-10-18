@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { SalePlaceService } from "../../service/salePlace.service";
-import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SalePlaceService } from '../../service/salePlace.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-sale-place',
@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class AddSalePlaceComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private salePlaceService: SalePlaceService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private salePlaceService: SalePlaceService) { }
 
   addForm: FormGroup;
 

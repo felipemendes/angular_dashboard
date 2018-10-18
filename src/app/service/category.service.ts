@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorage } from '../core/token.storage';
-import { Category } from "../model/category.model";
+import { Category } from '../model/category.model';
 
 @Injectable()
 export class CategoryService {

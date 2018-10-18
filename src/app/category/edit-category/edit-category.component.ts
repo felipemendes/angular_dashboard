@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryService } from "../../service/category.service";
-import { Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators}  from "@angular/forms";
+import { CategoryService } from '../../service/category.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -12,14 +12,14 @@ import { first } from 'rxjs/operators';
 export class EditCategoryComponent implements OnInit {
 
   editForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private router: Router, private categoryService: CategoryService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private categoryService: CategoryService) { }
 
   ngOnInit() {
-    let categoryUuid = localStorage.getItem("editCategoryUuid");
-    let categoryStatus = localStorage.getItem("editCategoryStatus");
+    const categoryUuid = localStorage.getItem('editCategoryUuid');
+    const categoryStatus = localStorage.getItem('editCategoryStatus');
 
-    if(!categoryUuid) {
-      alert("Invalid action.")
+    if (!categoryUuid) {
+      alert('Invalid action.');
       this.router.navigate(['list-category']);
       return;
     }
@@ -32,9 +32,9 @@ export class EditCategoryComponent implements OnInit {
       url_image: ['', Validators.required]
     });
 
-    this.categoryService.getCategoryByUuid(categoryUuid, parseInt(categoryStatus))
+    this.categoryService.getCategoryByUuid(categoryUuid, parseInt(categoryStatus, 2))
       .subscribe( data => {
-        this.editForm.setValue(data["categories"][0]);
+        this.editForm.setValue(data['categories'][0]);
       });
   }
 

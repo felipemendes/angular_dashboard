@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SalePlaceService } from "../../service/salePlace.service";
-import { Router } from "@angular/router";
-import { FormBuilder, FormGroup, Validators}  from "@angular/forms";
+import { SalePlaceService } from '../../service/salePlace.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -12,14 +12,14 @@ import { first } from 'rxjs/operators';
 export class EditSalePlaceComponent implements OnInit {
 
   editForm: FormGroup;
-  constructor(private formBuilder: FormBuilder,private router: Router, private salePlaceService: SalePlaceService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private salePlaceService: SalePlaceService) { }
 
   ngOnInit() {
-    let salePlaceUuid = localStorage.getItem("editSalePlaceUuid");
-    let salePlaceStatus = localStorage.getItem("editSalePlaceStatus");
+    const salePlaceUuid = localStorage.getItem('editSalePlaceUuid');
+    const salePlaceStatus = localStorage.getItem('editSalePlaceStatus');
 
     if (!salePlaceUuid || !salePlaceStatus) {
-      alert("Invalid action.")
+      alert('Invalid action.');
       this.router.navigate(['list-sale-place']);
       return;
     }
@@ -32,9 +32,9 @@ export class EditSalePlaceComponent implements OnInit {
       phone: ['']
     });
 
-    this.salePlaceService.getSalePlaceByUuid(salePlaceUuid, parseInt(salePlaceStatus))
+    this.salePlaceService.getSalePlaceByUuid(salePlaceUuid, parseInt(salePlaceStatus, 2))
       .subscribe( data => {
-        this.editForm.setValue(data["sale_places"][0]);
+        this.editForm.setValue(data['sale_places'][0]);
       });
   }
 

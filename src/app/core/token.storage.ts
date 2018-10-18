@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router } from '@angular/router';
 
 const TOKEN_KEY = 'AuthToken';
 
@@ -10,9 +10,9 @@ export class TokenStorage {
 
   checkToken() {
     if (!this.getToken()) {
-      this.router.navigate(["login"]);
+      this.router.navigate(['login']);
     } else {
-      this.router.navigate(["list-category"]);
+      this.router.navigate(['list-category']);
     }
   }
 
