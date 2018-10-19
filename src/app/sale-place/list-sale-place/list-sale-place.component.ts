@@ -29,12 +29,12 @@ export class ListSalePlaceComponent implements OnInit {
       });
   }
 
-  previousPage() {
+  olderPage() {
     this.currentPage --;
     this.loadSalePlaces();
   }
 
-  nextPage() {
+  newerPage() {
     this.currentPage ++;
     this.loadSalePlaces();
   }

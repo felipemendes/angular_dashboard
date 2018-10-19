@@ -11,8 +11,11 @@ import { first } from 'rxjs/operators';
 })
 export class EditCategoryComponent implements OnInit {
 
-  editForm: FormGroup;
   constructor(private formBuilder: FormBuilder, private router: Router, private categoryService: CategoryService) { }
+
+  editForm: FormGroup;
+  statusFormatted;
+  fileSelected: File = null;
 
   ngOnInit() {
     const categoryUuid = localStorage.getItem('editCategoryUuid');
@@ -29,7 +32,7 @@ export class EditCategoryComponent implements OnInit {
       uuid: [],
       status: ['', Validators.required],
       title: ['', Validators.required],
-      url_image: ['', Validators.required]
+      url_image: ['']
     });
 
     this.categoryService.getCategoryByUuid(categoryUuid, parseInt(categoryStatus, 2))
@@ -38,21 +41,36 @@ export class EditCategoryComponent implements OnInit {
       });
   }
 
+  onFileSelected(event) {
+    this.fileSelected = <File>event.target.files[0];
+    this.editForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+  }
+
   onSubmit() {
     if (this.editForm.invalid) {
       return;
     }
 
-    this.categoryService.updateCategory(this.editForm.value)
+    this.statusFormatted = this.editForm.get('status').value === true ? '1' : this.editForm.get('status').value;
+
+    const formData = new FormData();
+    formData.append('id', this.editForm.get('id').value);
+    formData.append('uuid', this.editForm.get('uuid').value);
+    formData.append('status', this.statusFormatted);
+    formData.append('title', this.editForm.get('title').value);
+
+    if (this.fileSelected != null) {
+      formData.append('url_image', this.fileSelected, this.fileSelected.name);
+    }
+
+    this.categoryService.updateCategory(formData)
       .pipe(first())
       .subscribe(
-        () => {
+        res => {
+          console.log(res);
           this.router.navigate(['list-category']);
         },
-        error => {
-          alert(error);
-        }
+        err => console.log(err)
       );
   }
-
 }

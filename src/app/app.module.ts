@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 // tslint:disable-next-line:max-line-length
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatBadgeModule, MatCheckboxModule } from '@angular/material';
@@ -31,6 +32,7 @@ import { DeleteConfirmDialogComponent } from './shared/delete-confirm-dialog/del
 @NgModule({
   declarations: [
     AppComponent,
+    FileSelectDirective,
     LoginComponent,
     AddCategoryComponent,
     EditCategoryComponent,

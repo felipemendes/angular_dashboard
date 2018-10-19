@@ -14,6 +14,8 @@ export class AddCategoryComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private categoryService: CategoryService) { }
 
   addForm: FormGroup;
+  statusFormatted;
+  fileSelected: File = null;
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
@@ -25,14 +27,27 @@ export class AddCategoryComponent implements OnInit {
     });
   }
 
+  onFileSelected(event) {
+    this.fileSelected = <File>event.target.files[0];
+    this.addForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+  }
+
   onSubmit() {
     if (this.addForm.invalid) {
       return;
     }
 
-    this.categoryService.createCategory(this.addForm.value)
+    this.statusFormatted = this.addForm.get('status').value === true ? '1' : '0';
+
+    const formData = new FormData();
+    formData.append('status', this.statusFormatted);
+    formData.append('title', this.addForm.get('title').value);
+    formData.append('url_image', this.fileSelected, this.fileSelected.name);
+
+    this.categoryService.createCategory(formData)
       .subscribe(
-        () => {
+        res => {
+          console.log(res);
           this.router.navigate(['list-category']);
         },
         err => console.log(err)

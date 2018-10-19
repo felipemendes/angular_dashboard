@@ -17,12 +17,12 @@ export class CategoryService {
     return this.http.get<Category>(this.baseUrl + '/?uuid=' + uuid + '&status=' + status);
   }
 
-  createCategory(category: Category) {
-    return this.http.post(this.baseUrl, category);
+  createCategory(formData: FormData) {
+    return this.http.post(this.baseUrl, formData);
   }
 
-  updateCategory(category: Category) {
-    return this.http.put(this.baseUrl + '/' + category.uuid, category);
+  updateCategory(formData: FormData) {
+    return this.http.put(this.baseUrl + '/' + formData.get('uuid'), formData);
   }
 
   deleteCategory(uuid: string) {

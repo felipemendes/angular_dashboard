@@ -6,3 +6,14 @@
 .full-width {
   width: 100%;
 }
+
+.input-file {
+  label {
+    width: 100%;
+    display: inline-block;
+    padding-bottom: 15px;
+  }
+  input {
+    padding-bottom: 20px;
+  }
+}

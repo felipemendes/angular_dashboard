@@ -15,9 +15,10 @@
       <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
     </mat-form-field>
 
-    <mat-form-field class="full-width">
-      <input matInput formControlName="url_image" placeholder="Image" name="url_image" id="url_image" required="">
-    </mat-form-field>
+    <div class="form-group input-file">
+      <label for="url_image">Choose image</label>
+      <input type="file" id="url_image" name="url_image" (change)="onFileSelected($event)">
+    </div>
 
     <button mat-raised-button color="warn" class="button-item">Save</button>
   </form>

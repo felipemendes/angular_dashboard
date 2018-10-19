@@ -11,3 +11,13 @@
   margin-bottom: 20px;
   display: inline-block;
 }
+
+.input-file label {
+  width: 100%;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+.input-file input {
+  padding-bottom: 20px;
+}

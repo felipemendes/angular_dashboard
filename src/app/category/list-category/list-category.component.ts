@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../service/category.service';
 import { Category } from '../../model/category.model';
@@ -12,6 +13,7 @@ import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog
 })
 export class ListCategoryComponent implements OnInit {
 
+  baseUrl: string = environment.baseUrl;
   categories: Category[];
   currentPage = 0;
 
@@ -29,12 +31,12 @@ export class ListCategoryComponent implements OnInit {
       });
   }
 
-  previousPage() {
+  olderPage() {
     this.currentPage --;
     this.loadCategories();
   }
 
-  nextPage() {
+  newerPage() {
     this.currentPage ++;
     this.loadCategories();
   }
