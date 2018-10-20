@@ -21,12 +21,12 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private authService: AuthenticationService,
-              public snackBar: MatSnackBar) {}
+              private snackBar: MatSnackBar) {}
 
   onSubmit() {
     this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe(
       () => {
-        this.router.navigate(['list-category']);
+        this.router.navigate(['list-event']);
       },
       err => {
         this.snackBar.open(err.error.message, 'Not nice');

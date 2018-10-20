@@ -2,6 +2,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from '../login/login.component';
 
+import { AddEventComponent } from '../event/add-event/add-event.component';
+import { EditEventComponent } from '../event/edit-event/edit-event.component';
+import { ListEventComponent } from '../event/list-event/list-event.component';
+
 import { AddCategoryComponent } from '../category/add-category/add-category.component';
 import { ListCategoryComponent } from '../category/list-category/list-category.component';
 import { EditCategoryComponent } from '../category/edit-category/edit-category.component';
@@ -12,6 +16,10 @@ import { EditSalePlaceComponent } from '../sale-place/edit-sale-place/edit-sale-
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
+
+  { path: 'add-event', component: AddEventComponent },
+  { path: 'list-event', component: ListEventComponent },
+  { path: 'edit-event', component: EditEventComponent },
 
   { path: 'add-category', component: AddCategoryComponent },
   { path: 'list-category', component: ListCategoryComponent },

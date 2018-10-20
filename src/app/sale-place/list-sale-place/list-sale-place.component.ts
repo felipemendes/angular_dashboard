@@ -19,7 +19,7 @@ export class ListSalePlaceComponent implements OnInit {
   constructor(private router: Router,
               private salePlaceService: SalePlaceService,
               private dialog: MatDialog,
-              public snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.currentPage ++;

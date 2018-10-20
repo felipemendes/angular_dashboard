@@ -9,6 +9,10 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 
 import { LoginComponent } from './login/login.component';
 
+import { AddEventComponent } from './event/add-event/add-event.component';
+import { ListEventComponent } from './event/list-event/list-event.component';
+import { EventService } from './service/event.service';
+
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { EditCategoryComponent } from './category/edit-category/edit-category.component';
 import { ListCategoryComponent } from './category/list-category/list-category.component';
@@ -28,19 +32,23 @@ import { TokenStorage } from './core/token.storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DeleteConfirmDialogComponent } from './shared/delete-confirm-dialog/delete-confirm-dialog.component';
+import { EditEventComponent } from './event/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileSelectDirective,
     LoginComponent,
+    AddEventComponent,
+    ListEventComponent,
     AddCategoryComponent,
     EditCategoryComponent,
     ListCategoryComponent,
     ListSalePlaceComponent,
     AddSalePlaceComponent,
     EditSalePlaceComponent,
-    DeleteConfirmDialogComponent
+    DeleteConfirmDialogComponent,
+    EditEventComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +71,7 @@ import { DeleteConfirmDialogComponent } from './shared/delete-confirm-dialog/del
   ],
   providers: [
     AuthenticationService,
+    EventService,
     CategoryService,
     SalePlaceService,
     TokenStorage,

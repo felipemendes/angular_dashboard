@@ -2,37 +2,37 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
-import { CategoryService } from '../../service/category.service';
-import { Category } from '../../model/category.model';
+import { EventService } from '../../service/event.service';
+import { Event } from '../../model/event.model';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog/delete-confirm-dialog.component';
 
 @Component({
-  selector: 'app-list-category',
-  templateUrl: './list-category.component.html',
-  styleUrls: ['./list-category.component.min.css']
+  selector: 'app-list-event',
+  templateUrl: './list-event.component.html',
+  styleUrls: ['./list-event.component.min.css']
 })
-export class ListCategoryComponent implements OnInit {
+export class ListEventComponent implements OnInit {
 
   baseUrl: string = environment.baseUrl;
-  categories: Category[];
+  events: Event[];
   currentPage = 0;
 
   constructor(private router: Router,
-              private categoryService: CategoryService,
+              private eventService: EventService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.currentPage ++;
-    this.loadCategories();
+    this.loadEvents();
   }
 
-  loadCategories(status = 1) {
-    this.categoryService.getCategories(status, this.currentPage)
+  loadEvents(status = 1) {
+    this.eventService.getEvents(status, this.currentPage)
       .subscribe(
         res => {
-          this.categories = res['categories'];
+          this.events = res['events'];
         },
         () => {
           this.snackBar.open('Could not load data. Check server.', 'Okay');
@@ -42,15 +42,15 @@ export class ListCategoryComponent implements OnInit {
 
   olderPage() {
     this.currentPage --;
-    this.loadCategories();
+    this.loadEvents();
   }
 
   newerPage() {
     this.currentPage ++;
-    this.loadCategories();
+    this.loadEvents();
   }
 
-  deleteCategory(category: Category): void {
+  deleteEvent(event: Event): void {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -63,11 +63,11 @@ export class ListCategoryComponent implements OnInit {
     const dialogReference = this.dialog.open(DeleteConfirmDialogComponent, dialogConfig);
     dialogReference.afterClosed().subscribe(result => {
       if (result === true) {
-        this.categoryService.deleteCategory(category.uuid)
+        this.eventService.deleteEvent(event.uuid)
         .subscribe(
           res => {
             this.snackBar.open(res['message'], 'Nice');
-            this.categories = this.categories.filter(u => u !== category);
+            this.events = this.events.filter(u => u !== event);
           },
           err => {
             this.snackBar.open('Check server: ' + err, 'Okay');
@@ -77,21 +77,22 @@ export class ListCategoryComponent implements OnInit {
     });
   }
 
-  editCategory(category: Category): void {
-    localStorage.removeItem('editCategoryUuid');
-    localStorage.setItem('editCategoryUuid', category.uuid.toString());
+  editEvent(event: Event): void {
+    localStorage.removeItem('editEventUuid');
+    localStorage.setItem('editEventUuid', event.uuid.toString());
 
-    localStorage.removeItem('editCategoryStatus');
-    localStorage.setItem('editCategoryStatus', category.status.toString());
+    localStorage.removeItem('editEventStatus');
+    localStorage.setItem('editEventStatus', event.status.toString());
 
-    this.router.navigate(['edit-category']);
+    this.router.navigate(['edit-event']);
   }
 
-  addCategory(): void {
-    this.router.navigate(['add-category']);
+  addEvent(): void {
+    this.router.navigate(['add-event']);
   }
 
   showInactives(): void {
-    this.loadCategories(0);
+    this.loadEvents(0);
   }
+
 }

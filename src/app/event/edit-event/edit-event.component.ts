@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { CategoryService } from '../../service/category.service';
+import { EventService } from '../../service/event.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-edit-category',
-  templateUrl: './edit-category.component.html',
-  styleUrls: ['./edit-category.component.min.css']
+  selector: 'app-edit-event',
+  templateUrl: './edit-event.component.html',
+  styleUrls: ['./edit-event.component.min.css']
 })
-export class EditCategoryComponent implements OnInit {
+export class EditEventComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
-              private categoryService: CategoryService,
+              private eventService: EventService,
               private snackBar: MatSnackBar) { }
 
   editForm: FormGroup;
@@ -22,12 +22,12 @@ export class EditCategoryComponent implements OnInit {
   fileSelected: File = null;
 
   ngOnInit() {
-    const categoryUuid = localStorage.getItem('editCategoryUuid');
-    const categoryStatus = localStorage.getItem('editCategoryStatus');
+    const eventUuid = localStorage.getItem('editEventUuid');
+    const eventStatus = localStorage.getItem('editEventStatus');
 
-    if (!categoryUuid) {
+    if (!eventUuid) {
       this.snackBar.open('Invalid action.', 'Not nice');
-      this.router.navigate(['list-category']);
+      this.router.navigate(['list-event']);
       return;
     }
 
@@ -36,13 +36,22 @@ export class EditCategoryComponent implements OnInit {
       uuid: [],
       status: ['', Validators.required],
       title: ['', Validators.required],
-      url_image: ['']
+      url_image: [''],
+      created_at: ['', Validators.required],
+      updated_at: ['', Validators.required],
+      place: ['', Validators.required],
+      place_phone: ['', Validators.required],
+      date: ['', Validators.required],
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+      id_category: ['', Validators.required],
+      id_sale_place: ['', Validators.required]
     });
 
-    this.categoryService.getCategoryByUuid(categoryUuid, parseInt(categoryStatus, 2))
+    this.eventService.getEventByUuid(eventUuid, parseInt(eventStatus, 2))
       .subscribe(
         res => {
-          this.editForm.setValue(res['categories'][0]);
+          this.editForm.setValue(res['events'][0]);
         },
         err => {
           this.snackBar.open(err, 'Not nice');
@@ -73,12 +82,22 @@ export class EditCategoryComponent implements OnInit {
       formData.append('url_image', this.fileSelected, this.fileSelected.name);
     }
 
-    this.categoryService.updateCategory(formData)
+    formData.append('created_at', this.editForm.get('created_at').value);
+    formData.append('updated_at', this.editForm.get('updated_at').value);
+    formData.append('place', this.editForm.get('place').value);
+    formData.append('place_phone', this.editForm.get('place_phone').value);
+    formData.append('date', this.editForm.get('date').value);
+    formData.append('address', this.editForm.get('address').value);
+    formData.append('city', this.editForm.get('city').value);
+    formData.append('id_category', this.editForm.get('id_category').value);
+    formData.append('id_sale_place', this.editForm.get('id_sale_place').value);
+
+    this.eventService.updateEvent(formData)
       .pipe(first())
       .subscribe(
         res => {
           this.snackBar.open(res['message'], 'Nice');
-          this.router.navigate(['list-category']);
+          this.router.navigate(['list-event']);
         },
         err => {
           this.snackBar.open(err, 'Not nice');

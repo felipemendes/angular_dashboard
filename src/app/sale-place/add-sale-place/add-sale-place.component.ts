@@ -14,7 +14,7 @@ export class AddSalePlaceComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private salePlaceService: SalePlaceService,
-              public snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar) { }
 
   addForm: FormGroup;
 

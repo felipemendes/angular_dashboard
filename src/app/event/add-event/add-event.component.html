@@ -1,0 +1,61 @@
+<header class="docs-header-background">
+  <div class="docs-header-section">
+    <div class="docs-header-headline">
+      <h1 class="mat-h1">Add Event</h1>
+    </div>
+  </div>
+</header>
+
+<mat-card class="material-card box-shadow event-card">
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+    <mat-checkbox formControlName="status" name="status" id="status">Status</mat-checkbox>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
+    </mat-form-field>
+
+    <div class="form-group input-file">
+      <label for="url_image">Choose image</label>
+      <input type="file" id="url_image" name="url_image" (change)="onFileSelected($event)">
+    </div>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="created_at" placeholder="created_at" name="created_at" id="created_at" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="updated_at" placeholder="updated_at" name="updated_at" id="updated_at" required="">
+    </mat-form-field>
+    
+    <mat-form-field class="full-width">
+      <input matInput formControlName="place" placeholder="Place" name="place" id="place" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="place_phone" placeholder="Place Phone" name="place_phone" id="place_phone" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="date" placeholder="Date" name="date" id="date" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="address" placeholder="Address" name="address" id="address" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="city" placeholder="City" name="city" id="city" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="id_category" placeholder="Category" name="id_category" id="id_category" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="id_sale_place" placeholder="Sale Place" name="id_sale_place" id="id_sale_place" required="">
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" class="button-item">Save</button>
+  </form>
+</mat-card>

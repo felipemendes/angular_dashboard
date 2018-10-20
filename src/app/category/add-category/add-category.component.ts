@@ -15,7 +15,7 @@ export class AddCategoryComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private categoryService: CategoryService,
-              public snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar) { }
 
   addForm: FormGroup;
   statusFormatted;

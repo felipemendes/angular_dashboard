@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/l
 import { Observable } from 'rxjs';
 import { Router, NavigationStart } from '@angular/router';
 import { TokenStorage } from './core/token.storage';
+import { EventService } from './service/event.service';
 import { CategoryService } from './service/category.service';
 import { SalePlaceService } from './service/salePlace.service';
 
@@ -16,12 +17,14 @@ export class AppComponent {
   showHeader = false;
   isHandset: Observable<BreakpointState> = this.breakpointObserver.observe(Breakpoints.Handset);
 
+  countEvents = 0;
   countCategories = 0;
   countSalePlaces = 0;
 
   constructor(private token: TokenStorage,
               private router: Router,
               private breakpointObserver: BreakpointObserver,
+              private eventService: EventService,
               private categoryService: CategoryService,
               private salePlaceService: SalePlaceService) {
     router.events.forEach((event) => {
@@ -38,6 +41,11 @@ export class AppComponent {
   ngOnInit() {
     this.token.checkToken();
 
+    this.eventService.getEvents()
+      .subscribe( data => {
+        this.countEvents = data['events'].length;
+      });
+
     this.categoryService.getCategories()
       .subscribe( data => {
         this.countCategories = data['categories'].length;
@@ -53,6 +61,10 @@ export class AppComponent {
   signOut(): void {
     this.token.signOut();
     this.router.navigate(['login']);
+  }
+
+  event(): void {
+    this.router.navigate(['list-event']);
   }
 
   category(): void {

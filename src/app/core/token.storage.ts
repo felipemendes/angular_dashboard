@@ -12,7 +12,7 @@ export class TokenStorage {
     if (!this.getToken()) {
       this.router.navigate(['login']);
     } else {
-      this.router.navigate(['list-category']);
+      this.router.navigate(['list-event']);
     }
   }
 
