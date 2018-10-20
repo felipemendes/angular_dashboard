@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { CategoryService } from '../../service/category.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -11,7 +12,10 @@ import { first } from 'rxjs/operators';
 })
 export class EditCategoryComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private categoryService: CategoryService) { }
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private categoryService: CategoryService,
+              public snackBar: MatSnackBar) { }
 
   editForm: FormGroup;
   statusFormatted;
@@ -22,7 +26,7 @@ export class EditCategoryComponent implements OnInit {
     const categoryStatus = localStorage.getItem('editCategoryStatus');
 
     if (!categoryUuid) {
-      alert('Invalid action.');
+      this.snackBar.open('Invalid action.', 'Not nice');
       this.router.navigate(['list-category']);
       return;
     }
@@ -36,9 +40,14 @@ export class EditCategoryComponent implements OnInit {
     });
 
     this.categoryService.getCategoryByUuid(categoryUuid, parseInt(categoryStatus, 2))
-      .subscribe( data => {
-        this.editForm.setValue(data['categories'][0]);
-      });
+      .subscribe(
+        res => {
+          this.editForm.setValue(res['categories'][0]);
+        },
+        err => {
+          this.snackBar.open(err, 'Not nice');
+        }
+      );
   }
 
   onFileSelected(event) {
@@ -48,6 +57,7 @@ export class EditCategoryComponent implements OnInit {
 
   onSubmit() {
     if (this.editForm.invalid) {
+      this.snackBar.open('Invalid form. Try again', 'Okay');
       return;
     }
 
@@ -67,10 +77,12 @@ export class EditCategoryComponent implements OnInit {
       .pipe(first())
       .subscribe(
         res => {
-          console.log(res);
+          this.snackBar.open(res['message'], 'Nice');
           this.router.navigate(['list-category']);
         },
-        err => console.log(err)
+        err => {
+          this.snackBar.open(err, 'Not nice');
+        }
       );
   }
 }

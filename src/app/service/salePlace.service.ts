@@ -8,7 +8,7 @@ export class SalePlaceService {
   constructor(private http: HttpClient) { }
 
   baseUrl: string = environment.baseUrl + '/salePlaces';
-  
+
   getSalePlaces(status: number = 1, page: number = 1) {
     return this.http.get<SalePlace[]>(this.baseUrl + '/?status=' + status + '&page=' + page + '&limit=10');
   }

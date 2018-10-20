@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { SalePlaceService } from '../../service/salePlace.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -12,14 +13,17 @@ import { first } from 'rxjs/operators';
 export class EditSalePlaceComponent implements OnInit {
 
   editForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router, private salePlaceService: SalePlaceService) { }
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private salePlaceService: SalePlaceService,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     const salePlaceUuid = localStorage.getItem('editSalePlaceUuid');
     const salePlaceStatus = localStorage.getItem('editSalePlaceStatus');
 
     if (!salePlaceUuid || !salePlaceStatus) {
-      alert('Invalid action.');
+      this.snackBar.open('Invalid action.', 'Not nice');
       this.router.navigate(['list-sale-place']);
       return;
     }
@@ -33,24 +37,31 @@ export class EditSalePlaceComponent implements OnInit {
     });
 
     this.salePlaceService.getSalePlaceByUuid(salePlaceUuid, parseInt(salePlaceStatus, 2))
-      .subscribe( data => {
-        this.editForm.setValue(data['sale_places'][0]);
-      });
+      .subscribe(
+        res => {
+          this.editForm.setValue(res['sale_places'][0]);
+        },
+        err => {
+          this.snackBar.open(err, 'Not nice');
+        }
+      );
   }
 
   onSubmit() {
     if (this.editForm.invalid) {
+      this.snackBar.open('Invalid form. Try again', 'Okay');
       return;
     }
 
     this.salePlaceService.updateSalePlace(this.editForm.value)
       .pipe(first())
       .subscribe(
-        () => {
+        res => {
+          this.snackBar.open(res['message'], 'Nice');
           this.router.navigate(['list-sale-place']);
         },
-        error => {
-          alert(error);
+        err => {
+          this.snackBar.open(err, 'Not nice');
         }
       );
   }

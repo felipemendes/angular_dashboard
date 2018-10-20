@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 
 // tslint:disable-next-line:max-line-length
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatBadgeModule, MatCheckboxModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatBadgeModule, MatCheckboxModule, MatSnackBarModule } from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 
@@ -58,7 +58,8 @@ import { DeleteConfirmDialogComponent } from './shared/delete-confirm-dialog/del
     MatInputModule,
     MatDialogModule,
     MatBadgeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule
   ],
   providers: [
     AuthenticationService,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { SalePlaceService } from '../../service/salePlace.service';
 import { SalePlace } from '../../model/salePlace.model';
@@ -15,7 +16,10 @@ export class ListSalePlaceComponent implements OnInit {
   salePlaces: SalePlace[];
   currentPage = 0;
 
-  constructor(private router: Router, private salePlaceService: SalePlaceService, private dialog: MatDialog) { }
+  constructor(private router: Router,
+              private salePlaceService: SalePlaceService,
+              private dialog: MatDialog,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.currentPage ++;
@@ -26,7 +30,11 @@ export class ListSalePlaceComponent implements OnInit {
     this.salePlaceService.getSalePlaces(status, this.currentPage)
       .subscribe( data => {
         this.salePlaces = data['sale_places'];
-      });
+      },
+      () => {
+        this.snackBar.open('Could not load data. Check server.', 'Okay');
+      }
+    );
   }
 
   olderPage() {
@@ -53,9 +61,15 @@ export class ListSalePlaceComponent implements OnInit {
     dialogReference.afterClosed().subscribe(result => {
       if (result === true) {
         this.salePlaceService.deleteSalePlace(salePlace.uuid)
-          .subscribe( () => {
-            this.salePlaces = this.salePlaces.filter(u => u !== salePlace);
-          });
+          .subscribe(
+            res => {
+              this.snackBar.open(res['message'], 'Nice');
+              this.salePlaces = this.salePlaces.filter(u => u !== salePlace);
+          },
+          err => {
+            this.snackBar.open('Check server: ' + err, 'Okay');
+          }
+        );
       }
     });
 

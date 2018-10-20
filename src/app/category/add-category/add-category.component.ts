@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../service/category.service';
 import { Router } from '@angular/router';
@@ -11,7 +12,10 @@ import { Router } from '@angular/router';
 
 export class AddCategoryComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private categoryService: CategoryService) { }
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private categoryService: CategoryService,
+              public snackBar: MatSnackBar) { }
 
   addForm: FormGroup;
   statusFormatted;
@@ -34,6 +38,7 @@ export class AddCategoryComponent implements OnInit {
 
   onSubmit() {
     if (this.addForm.invalid) {
+      this.snackBar.open('Invalid form. Try again', 'Okay');
       return;
     }
 
@@ -47,10 +52,12 @@ export class AddCategoryComponent implements OnInit {
     this.categoryService.createCategory(formData)
       .subscribe(
         res => {
-          console.log(res);
+          this.snackBar.open(res['message'], 'Nice');
           this.router.navigate(['list-category']);
         },
-        err => console.log(err)
+        err => {
+          this.snackBar.open(err, 'Not nice');
+        }
       );
   }
 }

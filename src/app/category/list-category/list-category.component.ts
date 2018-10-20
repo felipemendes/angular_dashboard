@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../service/category.service';
@@ -17,7 +18,10 @@ export class ListCategoryComponent implements OnInit {
   categories: Category[];
   currentPage = 0;
 
-  constructor(private router: Router, private categoryService: CategoryService, private dialog: MatDialog) { }
+  constructor(private router: Router,
+              private categoryService: CategoryService,
+              private dialog: MatDialog,
+              public snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.currentPage ++;
@@ -26,9 +30,14 @@ export class ListCategoryComponent implements OnInit {
 
   loadCategories(status = 1) {
     this.categoryService.getCategories(status, this.currentPage)
-      .subscribe( data => {
-        this.categories = data['categories'];
-      });
+      .subscribe(
+        res => {
+          this.categories = res['categories'];
+        },
+        () => {
+          this.snackBar.open('Could not load data. Check server.', 'Okay');
+        }
+      );
   }
 
   olderPage() {
@@ -55,12 +64,17 @@ export class ListCategoryComponent implements OnInit {
     dialogReference.afterClosed().subscribe(result => {
       if (result === true) {
         this.categoryService.deleteCategory(category.uuid)
-        .subscribe( () => {
-          this.categories = this.categories.filter(u => u !== category);
-        });
+        .subscribe(
+          res => {
+            this.snackBar.open(res['message'], 'Nice');
+            this.categories = this.categories.filter(u => u !== category);
+          },
+          err => {
+            this.snackBar.open('Check server: ' + err, 'Okay');
+          }
+        );
       }
     });
-
   }
 
   editCategory(category: Category): void {

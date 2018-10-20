@@ -6,10 +6,6 @@
     </div>
     <mat-card-content>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div *ngIf="loginError">
-          <div class="mat-raised-button mat-warn full-width">{{loginErrorMessage}}</div>
-        </div>
-
         <mat-form-field class="full-width">
           <input matInput type="email" id="email" formControlName="email" placeholder="Email address" required=""
             autofocus="">
