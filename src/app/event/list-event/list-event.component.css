@@ -14,6 +14,19 @@
   padding: 0px 24px 24px 24px;
 }
 
+.mat-card img {
+  height: 300px;
+  object-fit: cover;
+}
+
 h2 {
-  color: #f33d83;
+  color: #f44336;
+}
+
+.info-card p {
+  color: #3f51b5;
+}
+
+.info-card p small {
+  color: #000;
 }

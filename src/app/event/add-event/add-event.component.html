@@ -6,26 +6,22 @@
   </div>
 </header>
 
-<mat-card class="material-card box-shadow event-card">
+<mat-card class="material-card box-shadow item-card">
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
 
-    <mat-checkbox formControlName="status" name="status" id="status">Status</mat-checkbox>
+    <mat-checkbox formControlName="status" name="status" id="status">Activated</mat-checkbox>
 
     <mat-form-field class="full-width">
       <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
     </mat-form-field>
 
-    <div class="form-group input-file">
-      <label for="url_image">Choose image</label>
-      <input type="file" id="url_image" name="url_image" (change)="onFileSelected($event)">
-    </div>
-    
     <mat-form-field class="full-width">
       <input matInput formControlName="place" placeholder="Place" name="place" id="place" required="">
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="place_phone" placeholder="Place Phone" name="place_phone" id="place_phone" required="">
+      <input matInput formControlName="place_phone" placeholder="Place Phone" name="place_phone" id="place_phone"
+        required="">
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -45,8 +41,14 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="id_sale_place" placeholder="Sale Place" name="id_sale_place" id="id_sale_place" required="">
+      <input matInput formControlName="id_sale_place" placeholder="Sale Place" name="id_sale_place" id="id_sale_place"
+        required="">
     </mat-form-field>
+
+    <div class="form-group">
+      <input type="file" id="url_image" name="url_image" (change)="onFileSelected($event)" class="input-file">
+      <label for="url_image"><strong>Choose image</strong></label>
+    </div>
 
     <button mat-raised-button color="warn" class="button-item">Save</button>
   </form>

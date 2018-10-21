@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { environment } from '../../../environments/environment';
 import { EventService } from '../../service/event.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -17,6 +18,7 @@ export class EditEventComponent implements OnInit {
               private eventService: EventService,
               private snackBar: MatSnackBar) { }
 
+  baseUrl: string = environment.baseUrl;
   editForm: FormGroup;
   statusFormatted;
   fileSelected: File = null;

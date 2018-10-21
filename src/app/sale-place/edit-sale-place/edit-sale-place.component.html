@@ -6,15 +6,10 @@
   </div>
 </header>
 
-<mat-card class="material-card box-shadow sale-place-card">
-  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="editForm">
 
-    <mat-form-field class="full-width">
-      <input type="hidden" formControlName="id" placeholder="ID" name="id" id="id" readonly>
-      <input matInput formControlName="uuid" placeholder="UUID (for reference only)" name="uuid" id="uuid" readonly style="color: #bbbbbb;">
-    </mat-form-field>
-
-    <mat-checkbox formControlName="status" name="status" id="status">Status</mat-checkbox>
+  <mat-card class="material-card box-shadow item-card">
+    <mat-checkbox formControlName="status" name="status" id="status">Activated</mat-checkbox>
 
     <mat-form-field class="full-width">
       <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
@@ -25,5 +20,15 @@
     </mat-form-field>
 
     <button mat-raised-button color="warn" class="button-item">Save</button>
-  </form>
-</mat-card>
+  </mat-card>
+
+  <mat-card class="material-card box-shadow item-card">
+    <p>For reference only</p>
+    <mat-form-field class="full-width">
+      <input type="hidden" formControlName="id" placeholder="ID" name="id" id="id" readonly>
+      <input matInput formControlName="uuid" placeholder="UUID" name="uuid" id="uuid" readonly
+        style="color: #bbbbbb;">
+    </mat-form-field>
+  </mat-card>
+
+</form>

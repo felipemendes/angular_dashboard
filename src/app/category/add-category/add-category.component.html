@@ -6,20 +6,20 @@
   </div>
 </header>
 
-<mat-card class="material-card box-shadow category-card">
+<mat-card class="material-card box-shadow item-card">
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
 
-    <mat-checkbox formControlName="status" name="status" id="status">Status</mat-checkbox>
-    
+    <mat-checkbox formControlName="status" name="status" id="status">Activated</mat-checkbox>
+
     <mat-form-field class="full-width">
       <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
     </mat-form-field>
 
-    <div class="form-group input-file">
-      <label for="url_image">Choose image</label>
-      <input type="file" id="url_image" name="url_image" (change)="onFileSelected($event)">
+    <div class="form-group">
+      <input type="file" id="url_image" name="url_image" (change)="onFileSelected($event)" class="input-file">
+      <label for="url_image"><strong>Choose image</strong></label>
     </div>
-
+    
     <button mat-raised-button color="warn" class="button-item">Save</button>
   </form>
 </mat-card>

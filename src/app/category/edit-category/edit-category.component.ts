@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { environment } from '../../../environments/environment';
 import { CategoryService } from '../../service/category.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
@@ -17,6 +18,7 @@ export class EditCategoryComponent implements OnInit {
               private categoryService: CategoryService,
               private snackBar: MatSnackBar) { }
 
+  baseUrl: string = environment.baseUrl;
   editForm: FormGroup;
   statusFormatted;
   fileSelected: File = null;

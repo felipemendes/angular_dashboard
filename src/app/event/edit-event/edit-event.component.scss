@@ -1,6 +1,21 @@
-.event-card {
-  margin: 20px auto;
+.editForm {
   display: flex !important;
+  flex-direction: column;
+  .item-card {
+    margin: 20px auto;
+    width: 100%;
+    .item-image {
+      p {
+        margin: 10px 0;
+      }
+      img {
+        height: 300px;
+        object-fit: contain;
+        padding: 0 20px;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .full-width {
@@ -13,13 +28,31 @@
 }
 
 .input-file {
-  label {
-    width: 100%;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  + label {
+    color: white;
+    background-color: #4a4eba;
     display: inline-block;
-    padding-bottom: 15px;
+    padding: 8px 18px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border-radius: 2px;
   }
-
-  input {
-    padding-bottom: 20px;
+  &:focus + label {
+    background-color: #e74231;
+  }
+  + label {
+    &:hover {
+      background-color: #e74231;
+    }
+    cursor: pointer;
+    * {
+      pointer-events: none;
+    }
   }
 }

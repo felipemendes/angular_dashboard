@@ -1,6 +1,22 @@
-.category-card {
-  margin: 20px auto;
+.editForm {
   display: flex !important;
+  flex-direction: column;
+}
+
+.editForm .item-card {
+  margin: 20px auto;
+  width: 100%;
+}
+
+.editForm .item-card .item-image p {
+  margin: 10px 0;
+}
+
+.editForm .item-card .item-image img {
+  height: 300px;
+  object-fit: contain;
+  padding: 0 20px;
+  width: 100%;
 }
 
 .full-width {
@@ -12,12 +28,37 @@
   display: inline-block;
 }
 
-.input-file label {
-  width: 100%;
-  display: inline-block;
-  padding-bottom: 15px;
+.input-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
 
-.input-file input {
-  padding-bottom: 20px;
+.input-file + label {
+  color: white;
+  background-color: #4a4eba;
+  display: inline-block;
+  padding: 8px 18px;
+  display: inline-block;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+.input-file:focus + label {
+  background-color: #e74231;
+}
+
+.input-file + label {
+  cursor: pointer;
+}
+
+.input-file + label:hover {
+  background-color: #e74231;
+}
+
+.input-file + label * {
+  pointer-events: none;
 }

@@ -1,20 +1,38 @@
-.event-card {
-    margin: 20px auto;
-    display: flex !important;
+.item-card {
+  margin: 20px auto;
+  display: flex !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.input-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+  + label {
+    color: white;
+    background-color: #4a4eba;
+    display: inline-block;
+    padding: 8px 18px;
+    display: inline-block;
+    margin-bottom: 20px;
+    border-radius: 2px;
   }
-  
-  .full-width {
-    width: 100%;
+  &:focus + label {
+    background-color: #e74231;
   }
-  
-  .input-file {
-    label {
-      width: 100%;
-      display: inline-block;
-      padding-bottom: 15px;
+  + label {
+    &:hover {
+      background-color: #e74231;
     }
-    input {
-      padding-bottom: 20px;
+    cursor: pointer;
+    * {
+      pointer-events: none;
     }
   }
-  
+}
