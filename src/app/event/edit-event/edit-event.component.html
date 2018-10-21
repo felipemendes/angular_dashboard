@@ -9,12 +9,6 @@
 <mat-card class="material-card box-shadow event-card">
   <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
 
-    <mat-form-field class="full-width">
-      <input type="hidden" formControlName="id" placeholder="ID" name="id" id="id" readonly>
-      <input matInput formControlName="uuid" placeholder="UUID (for reference only)" name="uuid" id="uuid" readonly
-        style="color: #bbbbbb;">
-    </mat-form-field>
-
     <mat-checkbox formControlName="status" name="status" id="status">Status</mat-checkbox>
 
     <mat-form-field class="full-width">
@@ -27,14 +21,6 @@
     </div>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="created_at" placeholder="created_at" name="created_at" id="created_at" required="">
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <input matInput formControlName="updated_at" placeholder="updated_at" name="updated_at" id="updated_at" required="">
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
       <input matInput formControlName="place" placeholder="Place" name="place" id="place" required="">
     </mat-form-field>
 
@@ -43,7 +29,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="date" placeholder="Date" name="date" id="date" required="">
+      <input type="datetime-local" matInput formControlName="date" placeholder="Date" name="date" id="date" required="">
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -55,11 +41,25 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="id_category" placeholder="Category" name="id_category" id="id_category" required="">
+      <input matInput formControlName="id_category" placeholder="Category ID" name="id_category" id="id_category" required="">
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="id_sale_place" placeholder="Sale Place" name="id_sale_place" id="id_sale_place" required="">
+      <input matInput formControlName="id_sale_place" placeholder="Sale Place ID" name="id_sale_place" id="id_sale_place" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="hidden" formControlName="id" placeholder="ID" name="id" id="id" readonly>
+      <input matInput formControlName="uuid" placeholder="UUID (for reference only)" name="uuid" id="uuid" readonly
+        style="color: #bbbbbb;">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="datetime-local" matInput formControlName="created_at" placeholder="Created at (for reference only)" name="created_at" id="created_at" readonly style="color: #bbbbbb;">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input type="datetime-local" matInput formControlName="updated_at" placeholder="Updated at (for reference only)" name="updated_at" id="updated_at" readonly style="color: #bbbbbb;">
     </mat-form-field>
 
     <button mat-raised-button color="warn" class="button-item">Save</button>

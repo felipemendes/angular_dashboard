@@ -28,8 +28,8 @@ export class AddEventComponent implements OnInit {
       status: ['', Validators.required],
       title: ['', Validators.required],
       url_image: ['', Validators.required],
-      created_at: ['', Validators.required],
-      updated_at: ['', Validators.required],
+      created_at: [],
+      updated_at: [],
       place: ['', Validators.required],
       place_phone: ['', Validators.required],
       date: ['', Validators.required],
@@ -47,6 +47,7 @@ export class AddEventComponent implements OnInit {
 
   onSubmit() {
     if (this.addForm.invalid) {
+      console.log(this.addForm.value);
       this.snackBar.open('Invalid form. Try again', 'Okay');
       return;
     }

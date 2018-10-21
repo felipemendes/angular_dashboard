@@ -24,6 +24,10 @@
 
   </mat-card-header>
   <img mat-card-image src="{{baseUrl}}/{{event.url_image}}" alt="{{event.title}}">
+  <div class="info-card">
+    <p><small>when: </small>{{event.date | date :  "dd/MM/y HH:mm (EEEE)"}}</p>
+    <p><small>where: </small>{{event.place}} - {{event.city}}</p>
+  </div>
   <mat-card-actions>
     <button mat-button (click)="editEvent(event)" color="primary">EDIT</button>
     <button mat-button (click)="deleteEvent(event)" color="warn">DELETE</button>

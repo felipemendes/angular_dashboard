@@ -19,14 +19,6 @@
       <label for="url_image">Choose image</label>
       <input type="file" id="url_image" name="url_image" (change)="onFileSelected($event)">
     </div>
-
-    <mat-form-field class="full-width">
-      <input matInput formControlName="created_at" placeholder="created_at" name="created_at" id="created_at" required="">
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <input matInput formControlName="updated_at" placeholder="updated_at" name="updated_at" id="updated_at" required="">
-    </mat-form-field>
     
     <mat-form-field class="full-width">
       <input matInput formControlName="place" placeholder="Place" name="place" id="place" required="">
@@ -37,7 +29,7 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="date" placeholder="Date" name="date" id="date" required="">
+      <input type="datetime-local" matInput formControlName="date" placeholder="Date" name="date" id="date" required="">
     </mat-form-field>
 
     <mat-form-field class="full-width">
