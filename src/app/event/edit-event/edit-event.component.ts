@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
 import { environment } from '../../../environments/environment';
-import { EventService } from '../../service/event.service';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { EventService } from '../../service/event.service';
+import { CategoryService } from '../../service/category.service';
+import { Category } from '../../model/category.model';
+import { SalePlaceService } from '../../service/salePlace.service';
+import { SalePlace } from '../../model/salePlace.model';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -15,24 +19,19 @@ export class EditEventComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
+              private snackBar: MatSnackBar,
               private eventService: EventService,
-              private snackBar: MatSnackBar) { }
+              private categoryService: CategoryService,
+              private salePlaceService: SalePlaceService) { }
 
   baseUrl: string = environment.baseUrl;
-  editForm: FormGroup;
   statusFormatted;
+  editForm: FormGroup;
   fileSelected: File = null;
+  categories: Category[];
+  salePlaces: SalePlace[];
 
   ngOnInit() {
-    const eventUuid = localStorage.getItem('editEventUuid');
-    const eventStatus = localStorage.getItem('editEventStatus');
-
-    if (!eventUuid) {
-      this.snackBar.open('Invalid action.', 'Not nice');
-      this.router.navigate(['list-event']);
-      return;
-    }
-
     this.editForm = this.formBuilder.group({
       id: [],
       uuid: [],
@@ -50,6 +49,26 @@ export class EditEventComponent implements OnInit {
       id_sale_place: ['', Validators.required]
     });
 
+    this.loadEvents();
+    this.loadCategories();
+    this.loadSalePlaces();
+  }
+
+  onFileSelected(event) {
+    this.fileSelected = <File>event.target.files[0];
+    this.editForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+  }
+
+  loadEvents() {
+    const eventUuid = localStorage.getItem('editEventUuid');
+    const eventStatus = localStorage.getItem('editEventStatus');
+
+    if (!eventUuid) {
+      this.snackBar.open('Invalid action.', 'Not nice');
+      this.router.navigate(['list-event']);
+      return;
+    }
+
     this.eventService.getEventByUuid(eventUuid, parseInt(eventStatus, 2))
       .subscribe(
         res => {
@@ -61,9 +80,28 @@ export class EditEventComponent implements OnInit {
       );
   }
 
-  onFileSelected(event) {
-    this.fileSelected = <File>event.target.files[0];
-    this.editForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+  loadCategories() {
+    this.categoryService.getCategories()
+      .subscribe(
+        res => {
+          this.categories = res['categories'];
+        },
+        () => {
+          this.snackBar.open('Could not load categories. Check server.', 'Okay');
+        }
+      );
+  }
+
+  loadSalePlaces() {
+    this.salePlaceService.getSalePlaces()
+      .subscribe(
+        res => {
+          this.salePlaces = res['sale_places'];
+        },
+        () => {
+          this.snackBar.open('Could not load sale places. Check server.', 'Okay');
+        }
+      );
   }
 
   onSubmit() {
@@ -93,6 +131,8 @@ export class EditEventComponent implements OnInit {
     formData.append('city', this.editForm.get('city').value);
     formData.append('id_category', this.editForm.get('id_category').value);
     formData.append('id_sale_place', this.editForm.get('id_sale_place').value);
+
+    console.log(this.editForm.get('id_category').value);
 
     this.eventService.updateEvent(formData)
       .pipe(first())

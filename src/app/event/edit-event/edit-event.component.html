@@ -37,13 +37,19 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="id_category" placeholder="Category ID" name="id_category" id="id_category"
-        required="">
+      <mat-select formControlName="id_category" name="id_category" id="id_category" placeholder="Category" required="">
+        <mat-option *ngFor="let category of categories" [value]="category.id">
+          {{category.title}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="id_sale_place" placeholder="Sale Place ID" name="id_sale_place" id="id_sale_place"
-        required="">
+      <mat-select formControlName="id_sale_place" name="id_sale_place" id="id_sale_place" placeholder="Sale Place" required="">
+        <mat-option *ngFor="let salePlace of salePlaces" [value]="salePlace.id">
+          {{salePlace.title}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
     <div class="item-image">

@@ -28,13 +28,14 @@ export class ListSalePlaceComponent implements OnInit {
 
   loadSalePlaces(status = 1) {
     this.salePlaceService.getSalePlaces(status, this.currentPage)
-      .subscribe( data => {
-        this.salePlaces = data['sale_places'];
-      },
-      () => {
-        this.snackBar.open('Could not load data. Check server.', 'Okay');
-      }
-    );
+      .subscribe(
+        res => {
+          this.salePlaces = res['sale_places'];
+        },
+        () => {
+          this.snackBar.open('Could not load data. Check server.', 'Okay');
+        }
+      );
   }
 
   olderPage() {

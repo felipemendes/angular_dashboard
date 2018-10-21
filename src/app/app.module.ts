@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 
 // tslint:disable-next-line:max-line-length
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatBadgeModule, MatCheckboxModule, MatSnackBarModule } from '@angular/material';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatBadgeModule, MatCheckboxModule, MatSnackBarModule, MatSelectModule } from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 
@@ -67,7 +67,8 @@ import { EditEventComponent } from './event/edit-event/edit-event.component';
     MatDialogModule,
     MatBadgeModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
   ],
   providers: [
     AuthenticationService,

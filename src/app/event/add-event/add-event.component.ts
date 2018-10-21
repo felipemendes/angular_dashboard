@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EventService } from '../../service/event.service';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
+import { EventService } from '../../service/event.service';
+import { Category } from '../../model/category.model';
+import { CategoryService } from '../../service/category.service';
+import { SalePlace } from '../../model/salePlace.model';
+import { SalePlaceService } from '../../service/salePlace.service';
 
 @Component({
   selector: 'app-add-event',
@@ -14,12 +18,16 @@ export class AddEventComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
+              private snackBar: MatSnackBar,
               private eventService: EventService,
-              private snackBar: MatSnackBar) { }
+              private categoryService: CategoryService,
+              private salePlaceService: SalePlaceService) { }
 
-  addForm: FormGroup;
   statusFormatted;
+  addForm: FormGroup;
   fileSelected: File = null;
+  categories: Category[];
+  salePlaces: SalePlace[];
 
   ngOnInit() {
     this.addForm = this.formBuilder.group({
@@ -38,11 +46,38 @@ export class AddEventComponent implements OnInit {
       id_category: ['', Validators.required],
       id_sale_place: ['', Validators.required]
     });
+
+    this.loadCategories();
+    this.loadSalePlaces();
   }
 
   onFileSelected(event) {
     this.fileSelected = <File>event.target.files[0];
     this.addForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+  }
+
+  loadCategories() {
+    this.categoryService.getCategories()
+      .subscribe(
+        res => {
+          this.categories = res['categories'];
+        },
+        () => {
+          this.snackBar.open('Could not load categories. Check server.', 'Okay');
+        }
+      );
+  }
+
+  loadSalePlaces() {
+    this.salePlaceService.getSalePlaces()
+      .subscribe(
+        res => {
+          this.salePlaces = res['sale_places'];
+        },
+        () => {
+          this.snackBar.open('Could not load sale places. Check server.', 'Okay');
+        }
+      );
   }
 
   onSubmit() {
