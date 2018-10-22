@@ -29,7 +29,7 @@ export class ListCategoryComponent implements OnInit {
   }
 
   loadCategories(status = 1) {
-    this.categoryService.getCategories(status, this.currentPage)
+    this.categoryService.getCategories(status, 10, this.currentPage)
       .subscribe(
         res => {
           this.categories = res['categories'];

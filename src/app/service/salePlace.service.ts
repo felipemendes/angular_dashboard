@@ -9,8 +9,8 @@ export class SalePlaceService {
 
   baseUrl: string = environment.baseUrl + '/salePlaces';
 
-  getSalePlaces(status: number = 1, page: number = 1) {
-    return this.http.get<SalePlace[]>(this.baseUrl + '/?status=' + status + '&page=' + page + '&limit=10');
+  getSalePlaces(status: number = 1, limit: number = 10, page: number = 1) {
+    return this.http.get<SalePlace[]>(this.baseUrl + '/?status=' + status + '&page=' + page + '&limit=' + limit);
   }
 
   getSalePlaceByUuid(uuid: string, status: number = 1) {

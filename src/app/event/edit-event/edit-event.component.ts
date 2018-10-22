@@ -81,7 +81,7 @@ export class EditEventComponent implements OnInit {
   }
 
   loadCategories() {
-    this.categoryService.getCategories()
+    this.categoryService.getCategories(1, 0)
       .subscribe(
         res => {
           this.categories = res['categories'];
@@ -93,7 +93,7 @@ export class EditEventComponent implements OnInit {
   }
 
   loadSalePlaces() {
-    this.salePlaceService.getSalePlaces()
+    this.salePlaceService.getSalePlaces(1, 0)
       .subscribe(
         res => {
           this.salePlaces = res['sale_places'];

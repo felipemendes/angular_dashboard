@@ -29,7 +29,7 @@ export class ListEventComponent implements OnInit {
   }
 
   loadEvents(status = 1) {
-    this.eventService.getEvents(status, this.currentPage)
+    this.eventService.getEvents(status, 10, this.currentPage)
       .subscribe(
         res => {
           this.events = res['events'];

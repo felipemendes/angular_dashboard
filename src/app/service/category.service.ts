@@ -9,8 +9,8 @@ export class CategoryService {
 
   baseUrl: string = environment.baseUrl + '/categories';
 
-  getCategories(status: number = 1, page: number = 1) {
-    return this.http.get<Category[]>(this.baseUrl + '/?status=' + status + '&page=' + page + '&limit=10');
+  getCategories(status: number = 1, limit: number = 10, page: number = 1) {
+    return this.http.get<Category[]>(this.baseUrl + '/?status=' + status + '&page=' + page + '&limit=' + limit);
   }
 
   getCategoryByUuid(uuid: string, status: number = 1) {

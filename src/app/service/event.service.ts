@@ -9,8 +9,8 @@ export class EventService {
 
   baseUrl: string = environment.baseUrl + '/events';
 
-  getEvents(status: number = 1, page: number = 1) {
-    return this.http.get<Event[]>(this.baseUrl + '/?status=' + status + '&page=' + page + '&limit=10');
+  getEvents(status: number = 1, limit: number = 10, page: number = 1) {
+    return this.http.get<Event[]>(this.baseUrl + '/?status=' + status + '&page=' + page + '&limit=' + limit);
   }
 
   getEventByUuid(uuid: string, status: number = 1) {

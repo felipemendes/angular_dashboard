@@ -27,7 +27,7 @@ export class ListSalePlaceComponent implements OnInit {
   }
 
   loadSalePlaces(status = 1) {
-    this.salePlaceService.getSalePlaces(status, this.currentPage)
+    this.salePlaceService.getSalePlaces(status, 10, this.currentPage)
       .subscribe(
         res => {
           this.salePlaces = res['sale_places'];

@@ -41,17 +41,17 @@ export class AppComponent {
   ngOnInit() {
     this.token.checkToken();
 
-    this.eventService.getEvents()
+    this.eventService.getEvents(1, 0)
       .subscribe( data => {
         this.countEvents = data['events'].length;
       });
 
-    this.categoryService.getCategories()
+    this.categoryService.getCategories(1, 0)
       .subscribe( data => {
         this.countCategories = data['categories'].length;
       });
 
-    this.salePlaceService.getSalePlaces()
+    this.salePlaceService.getSalePlaces(1, 0)
       .subscribe( data => {
         this.countSalePlaces = data['sale_places'].length;
       });
