@@ -5,8 +5,6 @@ export class Event {
   status: boolean;
   title: string;
   url_image: string;
-  place: string;
-  place_phone: string;
   date: string;
   address: string;
   city: string;

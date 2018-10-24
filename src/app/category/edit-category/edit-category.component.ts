@@ -18,7 +18,6 @@ export class EditCategoryComponent implements OnInit {
               private categoryService: CategoryService,
               private snackBar: MatSnackBar) { }
 
-  baseUrl: string = environment.baseUrl;
   editForm: FormGroup;
   statusFormatted;
   fileSelected: File = null;

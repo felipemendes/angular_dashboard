@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { EventService } from '../../service/event.service';
 import { Event } from '../../model/event.model';
@@ -14,7 +13,6 @@ import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog
 })
 export class ListEventComponent implements OnInit {
 
-  baseUrl: string = environment.baseUrl;
   events: Event[];
   currentPage = 0;
 

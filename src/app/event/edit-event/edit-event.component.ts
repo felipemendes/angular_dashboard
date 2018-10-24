@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
@@ -24,7 +23,6 @@ export class EditEventComponent implements OnInit {
               private categoryService: CategoryService,
               private salePlaceService: SalePlaceService) { }
 
-  baseUrl: string = environment.baseUrl;
   statusFormatted;
   editForm: FormGroup;
   fileSelected: File = null;
@@ -40,8 +38,6 @@ export class EditEventComponent implements OnInit {
       url_image: [''],
       created_at: [],
       updated_at: [],
-      place: ['', Validators.required],
-      place_phone: ['', Validators.required],
       date: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
@@ -50,6 +46,8 @@ export class EditEventComponent implements OnInit {
     });
 
     this.loadEvents();
+    console.log(this.editForm.get('date'));
+
     this.loadCategories();
     this.loadSalePlaces();
   }
@@ -124,15 +122,11 @@ export class EditEventComponent implements OnInit {
 
     formData.append('created_at', this.editForm.get('created_at').value);
     formData.append('updated_at', this.editForm.get('updated_at').value);
-    formData.append('place', this.editForm.get('place').value);
-    formData.append('place_phone', this.editForm.get('place_phone').value);
     formData.append('date', this.editForm.get('date').value);
     formData.append('address', this.editForm.get('address').value);
     formData.append('city', this.editForm.get('city').value);
     formData.append('id_category', this.editForm.get('id_category').value);
     formData.append('id_sale_place', this.editForm.get('id_sale_place').value);
-
-    console.log(this.editForm.get('id_category').value);
 
     this.eventService.updateEvent(formData)
       .pipe(first())

@@ -16,15 +16,6 @@
     </mat-form-field>
 
     <mat-form-field class="full-width">
-      <input matInput formControlName="place" placeholder="Place" name="place" id="place" required="">
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
-      <input matInput formControlName="place_phone" placeholder="Place Phone" name="place_phone" id="place_phone"
-        required="">
-    </mat-form-field>
-
-    <mat-form-field class="full-width">
       <input type="datetime-local" matInput formControlName="date" placeholder="Date" name="date" id="date" required="">
     </mat-form-field>
 
@@ -54,7 +45,7 @@
 
     <div class="item-image">
       <p>Current image</p>
-      <img mat-card-image src="{{baseUrl}}/{{this.editForm.get('url_image').value}}" alt="{{this.editForm.get('title').value}}">
+      <img mat-card-image src="{{this.editForm.get('url_image').value}}" alt="{{this.editForm.get('title').value}}">
     </div>
 
     <div class="form-group">

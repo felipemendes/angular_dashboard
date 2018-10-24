@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../service/category.service';
 import { Category } from '../../model/category.model';
@@ -14,7 +13,6 @@ import { DeleteConfirmDialogComponent } from '../../shared/delete-confirm-dialog
 })
 export class ListCategoryComponent implements OnInit {
 
-  baseUrl: string = environment.baseUrl;
   categories: Category[];
   currentPage = 0;
 

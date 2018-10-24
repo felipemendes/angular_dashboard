@@ -23,7 +23,7 @@
     </ng-template>
 
   </mat-card-header>
-  <img mat-card-image src="{{baseUrl}}/{{category.url_image}}" alt="{{category.title}}">
+  <img mat-card-image src="{{category.url_image}}" alt="{{category.title}}">
   <mat-card-actions>
     <button mat-button (click)="editCategory(category)" color="primary">EDIT</button>
     <button mat-button (click)="deleteCategory(category)" color="warn">DELETE</button>

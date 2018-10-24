@@ -23,7 +23,7 @@
     </ng-template>
 
   </mat-card-header>
-  <img mat-card-image src="{{baseUrl}}/{{event.url_image}}" alt="{{event.title}}">
+  <img mat-card-image src="{{event.url_image}}" alt="{{event.title}}">
   <div class="info-card">
     <p><small>when: </small>{{event.date | date :  "dd/MM/y HH:mm (EEEE)"}}</p>
     <p><small>where: </small>{{event.place}} - {{event.city}}</p>

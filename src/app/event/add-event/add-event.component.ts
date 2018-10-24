@@ -38,8 +38,6 @@ export class AddEventComponent implements OnInit {
       url_image: ['', Validators.required],
       created_at: [],
       updated_at: [],
-      place: ['', Validators.required],
-      place_phone: ['', Validators.required],
       date: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
@@ -95,8 +93,6 @@ export class AddEventComponent implements OnInit {
     formData.append('url_image', this.fileSelected, this.fileSelected.name);
     formData.append('created_at', this.addForm.get('created_at').value);
     formData.append('updated_at', this.addForm.get('updated_at').value);
-    formData.append('place', this.addForm.get('place').value);
-    formData.append('place_phone', this.addForm.get('place_phone').value);
     formData.append('date', this.addForm.get('date').value);
     formData.append('address', this.addForm.get('address').value);
     formData.append('city', this.addForm.get('city').value);
