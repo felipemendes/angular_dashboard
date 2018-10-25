@@ -1,21 +1,21 @@
 <header class="docs-header-background">
   <div class="docs-header-section">
     <div class="docs-header-headline">
-      <h1 class="mat-h1">Sale Places</h1>
+      <h1 class="mat-h1">Users</h1>
     </div>
     <div class="docs-header-start">
-        <button mat-raised-button (click)="addSalePlace()">ADD NEW</button>
-        <button mat-flat-button color="primary" (click)="showInactives()">Show inactives</button>
+      <button mat-raised-button (click)="addUser()">ADD NEW</button>
+      <button mat-flat-button color="primary" (click)="showInactives()">Show inactives</button>
     </div>
   </div>
 </header>
 
 <mat-list>
-  <mat-list-item *ngFor="let salePlace of salePlaces">
-    <mat-icon mat-list-icon>business</mat-icon>
-    <h4 mat-line>{{salePlace.title}}</h4>
+  <mat-list-item *ngFor="let user of users">
+    <mat-icon mat-list-icon>account_circle</mat-icon>
+    <h4 mat-line>{{user.name}} ({{user.email}})</h4>
 
-    <p mat-line *ngIf="salePlace.status == 1;then active else inactive"></p>
+    <p mat-line *ngIf="user.status == 1;then active else inactive"></p>
     <ng-template #active>
       <p mat-line class="text-active">Active</p>
     </ng-template>
@@ -23,8 +23,8 @@
       <p mat-line class="text-inactive">Inative</p>
     </ng-template>
 
-    <a mat-button (click)="editSalePlace(salePlace)" color="primary">EDIT</a>
-    <a mat-button (click)="deleteSalePlace(salePlace)" color="warn">DELETE</a>
+    <a mat-button (click)="editUser(user)" color="primary">EDIT</a>
+    <a mat-button (click)="deleteUser(user)" color="warn">DELETE</a>
   </mat-list-item>
   <mat-divider></mat-divider>
 </mat-list>

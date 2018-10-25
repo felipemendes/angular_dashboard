@@ -4,12 +4,24 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { FileSelectDirective } from 'ng2-file-upload';
 
-// tslint:disable-next-line:max-line-length
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatCardModule, MatInputModule, MatDialogModule, MatBadgeModule, MatCheckboxModule, MatSnackBarModule, MatSelectModule } from '@angular/material';
+import {  MatToolbarModule,
+          MatButtonModule,
+          MatSidenavModule,
+          MatIconModule,
+          MatListModule,
+          MatCardModule,
+          MatInputModule,
+          MatDialogModule,
+          MatBadgeModule,
+          MatCheckboxModule,
+          MatSnackBarModule,
+          MatSelectModule
+        } from '@angular/material';
 
 import { LoginComponent } from './login/login.component';
 
 import { AddEventComponent } from './event/add-event/add-event.component';
+import { EditEventComponent } from './event/edit-event/edit-event.component';
 import { ListEventComponent } from './event/list-event/list-event.component';
 import { EventService } from './service/event.service';
 
@@ -23,6 +35,11 @@ import { EditSalePlaceComponent } from './sale-place/edit-sale-place/edit-sale-p
 import { ListSalePlaceComponent } from './sale-place/list-sale-place/list-sale-place.component';
 import { SalePlaceService } from './service/salePlace.service';
 
+import { AddUserComponent } from './user/add-user/add-user.component';
+import { EditUserComponent } from './user/edit-user/edit-user.component';
+import { ListUserComponent } from './user/list-user/list-user.component';
+import { UserService } from './service/user.service';
+
 import { routing } from './core/app.routing';
 import { AuthenticationService } from './service/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -32,7 +49,6 @@ import { TokenStorage } from './core/token.storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
 import { DeleteConfirmDialogComponent } from './shared/delete-confirm-dialog/delete-confirm-dialog.component';
-import { EditEventComponent } from './event/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +56,7 @@ import { EditEventComponent } from './event/edit-event/edit-event.component';
     FileSelectDirective,
     LoginComponent,
     AddEventComponent,
+    EditEventComponent,
     ListEventComponent,
     AddCategoryComponent,
     EditCategoryComponent,
@@ -47,8 +64,10 @@ import { EditEventComponent } from './event/edit-event/edit-event.component';
     ListSalePlaceComponent,
     AddSalePlaceComponent,
     EditSalePlaceComponent,
-    DeleteConfirmDialogComponent,
-    EditEventComponent
+    ListUserComponent,
+    EditUserComponent,
+    AddUserComponent,
+    DeleteConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -75,6 +94,7 @@ import { EditEventComponent } from './event/edit-event/edit-event.component';
     EventService,
     CategoryService,
     SalePlaceService,
+    UserService,
     TokenStorage,
     {
       provide: HTTP_INTERCEPTORS,

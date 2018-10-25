@@ -1,0 +1,29 @@
+<header class="docs-header-background">
+  <div class="docs-header-section">
+    <div class="docs-header-headline">
+      <h1 class="mat-h1">Add User</h1>
+    </div>
+  </div>
+</header>
+
+<mat-card class="material-card box-shadow user-card">
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+    <mat-checkbox formControlName="status" name="status" id="status">Activated</mat-checkbox>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="name" placeholder="Name" name="name" id="name" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="email" placeholder="Email" name="email" id="email">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="password" placeholder="Digite a senha" name="password" id="password" [type]="hide ? 'password' : 'text'">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" class="button-item">Save</button>
+  </form>
+</mat-card>

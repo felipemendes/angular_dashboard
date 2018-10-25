@@ -14,6 +14,10 @@ import { ListSalePlaceComponent } from '../sale-place/list-sale-place/list-sale-
 import { AddSalePlaceComponent } from '../sale-place/add-sale-place/add-sale-place.component';
 import { EditSalePlaceComponent } from '../sale-place/edit-sale-place/edit-sale-place.component';
 
+import { ListUserComponent } from '../user/list-user/list-user.component';
+import { AddUserComponent } from '../user/add-user/add-user.component';
+import { EditUserComponent } from '../user/edit-user/edit-user.component';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
 
@@ -28,6 +32,10 @@ const routes: Routes = [
   { path: 'list-sale-place', component: ListSalePlaceComponent },
   { path: 'add-sale-place', component: AddSalePlaceComponent },
   { path: 'edit-sale-place', component: EditSalePlaceComponent },
+
+  { path: 'list-user', component: ListUserComponent },
+  { path: 'add-user', component: AddUserComponent },
+  { path: 'edit-user', component: EditUserComponent },
 
   { path : '', component : LoginComponent }
 ];

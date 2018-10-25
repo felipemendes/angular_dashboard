@@ -6,6 +6,7 @@ import { TokenStorage } from './core/token.storage';
 import { EventService } from './service/event.service';
 import { CategoryService } from './service/category.service';
 import { SalePlaceService } from './service/salePlace.service';
+import { UserService } from './service/user.service';
 
 @Component({
   selector: 'app-root',
@@ -20,13 +21,15 @@ export class AppComponent {
   countEvents = 0;
   countCategories = 0;
   countSalePlaces = 0;
+  countUsers = 0;
 
   constructor(private token: TokenStorage,
               private router: Router,
               private breakpointObserver: BreakpointObserver,
               private eventService: EventService,
               private categoryService: CategoryService,
-              private salePlaceService: SalePlaceService) {
+              private salePlaceService: SalePlaceService,
+              private userService: UserService) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (event['url'] === '/login') {
@@ -56,6 +59,11 @@ export class AppComponent {
         this.countSalePlaces = data['sale_places'].length;
       });
 
+    this.userService.getUsers(1)
+      .subscribe( data => {
+        this.countUsers = data['users'].length;
+      });
+
   }
 
   signOut(): void {
@@ -73,6 +81,10 @@ export class AppComponent {
 
   salePlace(): void {
     this.router.navigate(['list-sale-place']);
+  }
+
+  user(): void {
+    this.router.navigate(['list-user']);
   }
 
 }
