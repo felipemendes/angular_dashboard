@@ -4,11 +4,15 @@
       <h1 class="mat-h1">Sale Places</h1>
     </div>
     <div class="docs-header-start">
-        <button mat-raised-button (click)="addSalePlace()">ADD NEW</button>
-        <button mat-flat-button color="primary" (click)="showInactives()">Show inactives</button>
+      <button mat-raised-button (click)="addSalePlace()">ADD NEW</button>
+      <button mat-flat-button color="primary" (click)="showInactives()">Show inactives</button>
     </div>
   </div>
 </header>
+
+<mat-list *ngIf="salePlaces != undefined && salePlaces.length == 0">
+  <a mat-button class="no-results">No results found</a>
+</mat-list>
 
 <mat-list>
   <mat-list-item *ngFor="let salePlace of salePlaces">

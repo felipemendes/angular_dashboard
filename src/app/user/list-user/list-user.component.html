@@ -11,6 +11,9 @@
 </header>
 
 <mat-list>
+  <mat-list *ngIf="users != undefined && users.length == 0">
+    <a mat-button class="no-results">No results found</a>
+  </mat-list>
   <mat-list-item *ngFor="let user of users">
     <mat-icon mat-list-icon>account_circle</mat-icon>
     <h4 mat-line>{{user.name}} ({{user.email}})</h4>

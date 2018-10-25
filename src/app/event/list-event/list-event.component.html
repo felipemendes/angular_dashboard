@@ -10,10 +10,16 @@
   </div>
 </header>
 
+<mat-list *ngIf="events != undefined && events.length == 0">
+  <a mat-button class="no-results">No results found</a>
+</mat-list>
+
 <mat-card class="material-card box-shadow" *ngFor="let event of events">
   <mat-card-header>
-    <mat-card-title><h2>{{event.title}}</h2></mat-card-title>
-    
+    <mat-card-title>
+      <h2>{{event.title}}</h2>
+    </mat-card-title>
+
     <mat-card-subtitle *ngIf="event.status == 1;then active else inactive"></mat-card-subtitle>
     <ng-template #active>
       <mat-card-subtitle class="text-active">Active</mat-card-subtitle>
@@ -25,7 +31,7 @@
   </mat-card-header>
   <img mat-card-image src="{{event.url_image}}" alt="{{event.title}}">
   <div class="info-card">
-    <p><small>when: </small>{{event.date | date :  "dd/MM/y HH:mm (EEEE)"}}</p>
+    <p><small>when: </small>{{event.date | date : "dd/MM/y HH:mm (EEEE)"}}</p>
     <p><small>where: </small>{{event.place}} - {{event.city}}</p>
   </div>
   <mat-card-actions>

@@ -10,10 +10,16 @@
   </div>
 </header>
 
+<mat-list *ngIf="categories != undefined && categories.length == 0">
+  <a mat-button class="no-results">No results found</a>
+</mat-list>
+
 <mat-card class="material-card box-shadow" *ngFor="let category of categories">
   <mat-card-header>
-    <mat-card-title><h2>{{category.title}}</h2></mat-card-title>
-    
+    <mat-card-title>
+      <h2>{{category.title}}</h2>
+    </mat-card-title>
+
     <mat-card-subtitle *ngIf="category.status == 1;then active else inactive"></mat-card-subtitle>
     <ng-template #active>
       <mat-card-subtitle class="text-active">Active</mat-card-subtitle>
