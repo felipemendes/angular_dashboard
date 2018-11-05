@@ -27,13 +27,13 @@ export class AddCategoryComponent implements OnInit {
       uuid: [],
       status: ['', Validators.required],
       title: ['', Validators.required],
-      url_image: ['', Validators.required]
+      category_image: ['', Validators.required]
     });
   }
 
   onFileSelected(event) {
     this.fileSelected = <File>event.target.files[0];
-    this.addForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+    this.addForm.get('category_image').setValue(this.fileSelected, this.fileSelected.name);
   }
 
   onSubmit() {
@@ -47,7 +47,7 @@ export class AddCategoryComponent implements OnInit {
     const formData = new FormData();
     formData.append('status', this.statusFormatted);
     formData.append('title', this.addForm.get('title').value);
-    formData.append('url_image', this.fileSelected, this.fileSelected.name);
+    formData.append('category_image', this.fileSelected, this.fileSelected.name);
 
     this.categoryService.createCategory(formData)
       .subscribe(

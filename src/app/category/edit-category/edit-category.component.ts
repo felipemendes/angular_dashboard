@@ -37,7 +37,7 @@ export class EditCategoryComponent implements OnInit {
       uuid: [],
       status: ['', Validators.required],
       title: ['', Validators.required],
-      url_image: ['']
+      category_image: ['']
     });
 
     this.categoryService.getCategoryByUuid(categoryUuid, parseInt(categoryStatus, 2))
@@ -53,7 +53,7 @@ export class EditCategoryComponent implements OnInit {
 
   onFileSelected(event) {
     this.fileSelected = <File>event.target.files[0];
-    this.editForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+    this.editForm.get('category_image').setValue(this.fileSelected, this.fileSelected.name);
   }
 
   onSubmit() {
@@ -71,7 +71,7 @@ export class EditCategoryComponent implements OnInit {
     formData.append('title', this.editForm.get('title').value);
 
     if (this.fileSelected != null) {
-      formData.append('url_image', this.fileSelected, this.fileSelected.name);
+      formData.append('category_image', this.fileSelected, this.fileSelected.name);
     }
 
     this.categoryService.updateCategory(formData)

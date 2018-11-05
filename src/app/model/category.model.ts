@@ -4,5 +4,5 @@ export class Category {
   uuid: string;
   status: boolean;
   title: string;
-  url_image: string;
+  category_image: string;
 }
