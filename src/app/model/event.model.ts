@@ -3,8 +3,11 @@ export class Event {
   id: number;
   uuid: string;
   status: boolean;
+  featured: boolean;
   title: string;
-  url_image: string;
+  image: string;
+  description: string;
+  price: string;
   date: string;
   address: string;
   city: string;

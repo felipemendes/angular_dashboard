@@ -24,6 +24,7 @@ export class AddEventComponent implements OnInit {
               private salePlaceService: SalePlaceService) { }
 
   statusFormatted;
+  featuredFormatted;
   addForm: FormGroup;
   fileSelected: File = null;
   categories: Category[];
@@ -34,8 +35,11 @@ export class AddEventComponent implements OnInit {
       id: [],
       uuid: [],
       status: ['', Validators.required],
+      featured: [],
       title: ['', Validators.required],
-      url_image: ['', Validators.required],
+      image: ['', Validators.required],
+      description: [''],
+      price: [''],
       created_at: [],
       updated_at: [],
       date: ['', Validators.required],
@@ -51,7 +55,7 @@ export class AddEventComponent implements OnInit {
 
   onFileSelected(event) {
     this.fileSelected = <File>event.target.files[0];
-    this.addForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+    this.addForm.get('image').setValue(this.fileSelected, this.fileSelected.name);
   }
 
   loadCategories() {
@@ -86,11 +90,15 @@ export class AddEventComponent implements OnInit {
     }
 
     this.statusFormatted = this.addForm.get('status').value === true ? '1' : '0';
+    this.featuredFormatted = this.addForm.get('featured').value === true ? '1' : '0';
 
     const formData = new FormData();
     formData.append('status', this.statusFormatted);
+    formData.append('featured', this.featuredFormatted);
     formData.append('title', this.addForm.get('title').value);
-    formData.append('url_image', this.fileSelected, this.fileSelected.name);
+    formData.append('description', this.addForm.get('description').value);
+    formData.append('price', this.addForm.get('price').value);
+    formData.append('image', this.fileSelected, this.fileSelected.name);
     formData.append('created_at', this.addForm.get('created_at').value);
     formData.append('updated_at', this.addForm.get('updated_at').value);
     formData.append('date', this.addForm.get('date').value);

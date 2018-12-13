@@ -24,6 +24,7 @@ export class EditEventComponent implements OnInit {
               private salePlaceService: SalePlaceService) { }
 
   statusFormatted;
+  featuredFormatted;
   editForm: FormGroup;
   fileSelected: File = null;
   categories: Category[];
@@ -34,8 +35,11 @@ export class EditEventComponent implements OnInit {
       id: [],
       uuid: [],
       status: ['', Validators.required],
+      featured: [],
       title: ['', Validators.required],
-      url_image: [''],
+      image: [''],
+      description: [''],
+      price: [''],
       created_at: [],
       updated_at: [],
       date: ['', Validators.required],
@@ -54,7 +58,7 @@ export class EditEventComponent implements OnInit {
 
   onFileSelected(event) {
     this.fileSelected = <File>event.target.files[0];
-    this.editForm.get('url_image').setValue(this.fileSelected, this.fileSelected.name);
+    this.editForm.get('image').setValue(this.fileSelected, this.fileSelected.name);
   }
 
   loadEvents() {
@@ -109,15 +113,19 @@ export class EditEventComponent implements OnInit {
     }
 
     this.statusFormatted = this.editForm.get('status').value === true ? '1' : this.editForm.get('status').value;
+    this.featuredFormatted = this.editForm.get('featured').value === true ? '1' : this.editForm.get('featured').value;
 
     const formData = new FormData();
     formData.append('id', this.editForm.get('id').value);
     formData.append('uuid', this.editForm.get('uuid').value);
     formData.append('status', this.statusFormatted);
+    formData.append('featured', this.featuredFormatted);
     formData.append('title', this.editForm.get('title').value);
+    formData.append('description', this.editForm.get('description').value);
+    formData.append('price', this.editForm.get('price').value);
 
     if (this.fileSelected != null) {
-      formData.append('url_image', this.fileSelected, this.fileSelected.name);
+      formData.append('image', this.fileSelected, this.fileSelected.name);
     }
 
     formData.append('created_at', this.editForm.get('created_at').value);

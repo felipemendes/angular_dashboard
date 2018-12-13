@@ -9,10 +9,24 @@
 <mat-card class="material-card box-shadow item-card">
   <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
 
-    <mat-checkbox formControlName="status" name="status" id="status">Activated</mat-checkbox>
+    <div class="full-width">
+      <mat-checkbox formControlName="status" name="status" id="status">Activated</mat-checkbox>
+    </div>
+
+    <div class="full-width">
+      <mat-checkbox formControlName="featured" name="featured" id="featured">Featured</mat-checkbox>
+    </div>
 
     <mat-form-field class="full-width">
       <input matInput formControlName="title" placeholder="Title" name="title" id="title" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="description" placeholder="Description" name="description" id="description" required="">
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <input matInput formControlName="price" placeholder="Price" name="price" id="price" required="">
     </mat-form-field>
 
     <mat-form-field class="full-width">
@@ -45,8 +59,8 @@
     </mat-form-field>
 
     <div class="form-group">
-      <input type="file" id="url_image" name="url_image" (change)="onFileSelected($event)" class="input-file">
-      <label for="url_image"><strong>Choose image</strong></label>
+      <input type="file" id="image" name="image" (change)="onFileSelected($event)" class="input-file">
+      <label for="image"><strong>Choose image</strong></label>
     </div>
 
     <button mat-raised-button color="warn" class="button-item">Save</button>
