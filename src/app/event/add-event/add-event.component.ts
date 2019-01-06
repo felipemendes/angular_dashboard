@@ -38,7 +38,7 @@ export class AddEventComponent implements OnInit {
       featured: [],
       title: ['', Validators.required],
       image: ['', Validators.required],
-      description: [''],
+      about: [''],
       price: [''],
       created_at: [],
       updated_at: [],
@@ -96,7 +96,7 @@ export class AddEventComponent implements OnInit {
     formData.append('status', this.statusFormatted);
     formData.append('featured', this.featuredFormatted);
     formData.append('title', this.addForm.get('title').value);
-    formData.append('description', this.addForm.get('description').value);
+    formData.append('about', this.addForm.get('about').value);
     formData.append('price', this.addForm.get('price').value);
     formData.append('image', this.fileSelected, this.fileSelected.name);
     formData.append('created_at', this.addForm.get('created_at').value);

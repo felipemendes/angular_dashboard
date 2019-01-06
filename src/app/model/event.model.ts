@@ -6,7 +6,7 @@ export class Event {
   featured: boolean;
   title: string;
   image: string;
-  description: string;
+  about: string;
   price: string;
   date: string;
   address: string;

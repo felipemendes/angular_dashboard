@@ -38,7 +38,7 @@ export class EditEventComponent implements OnInit {
       featured: [],
       title: ['', Validators.required],
       image: [''],
-      description: [''],
+      about: [''],
       price: [''],
       created_at: [],
       updated_at: [],
@@ -121,7 +121,7 @@ export class EditEventComponent implements OnInit {
     formData.append('status', this.statusFormatted);
     formData.append('featured', this.featuredFormatted);
     formData.append('title', this.editForm.get('title').value);
-    formData.append('description', this.editForm.get('description').value);
+    formData.append('about', this.editForm.get('about').value);
     formData.append('price', this.editForm.get('price').value);
 
     if (this.fileSelected != null) {
