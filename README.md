@@ -1,11 +1,11 @@
 
 ![Wercker](https://img.shields.io/wercker/ci/wercker/go-wercker-api.svg)
 ![AUR](https://img.shields.io/aur/license/yaourt.svg) 
-![GitHub last commit](https://img.shields.io/github/last-commit/felipemendes/purai_nodejs.svg)
-![GitHub contributors](https://img.shields.io/github/contributors/felipemendes/purai_nodejs.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/purai/angular_dashboard.svg)
+![GitHub contributors](https://img.shields.io/github/contributors/purai/angular_dashboard.svg)
 
 # PurAí Dashboard for Angular
-Module in [Angular](https://angular.io/) version 6 with [Angular Material](https://material.angular.io/). This application has all CRUD operations that consumes the REST endpoints from [PurAí API for Node.js](https://github.com/felipemendes/purai_nodejs_api).
+Module in [Angular](https://angular.io/) version 6 with [Angular Material](https://material.angular.io/). This application has all CRUD operations that consumes the REST endpoints from [PurAí API for Node.js](https://github.com/purai/nodejs_api).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.5.
 
@@ -14,7 +14,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Installation
 Get via git clone:
 ```
-$ git clone https://github.com/felipemendes/purai-angular-dashboard.git && cd purai-angular-dashboard
+$ git clone https://github.com/purai/angular_dashboard.git && cd angular_dashboard
 ```
 
 Get dependencies with [NPM](https://github.com/npm/cli):
